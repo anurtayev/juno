@@ -24,3 +24,6 @@ twbs:bootstrap
 pfafman:filesaver
 momentjs:moment
 harrison:papa-parse
+anurtayev:tsentry
+anurtayev:tsprojectentry
+anurtayev:tsinvoicing

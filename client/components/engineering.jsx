@@ -1,4 +1,4 @@
-App.Engineering = React.createClass({
+Engineering = React.createClass({
   
   propTypes: {
     projects: React.PropTypes.object.isRequired

@@ -1,4 +1,4 @@
-App.Engineering.Entry.ActionBar = React.createClass({
+ActionBar = React.createClass({
   
   handleSubmit() {
     Meteor.call('submit');

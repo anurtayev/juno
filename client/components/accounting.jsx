@@ -1,9 +1,8 @@
-App.Header = React.createClass({
+Accounting = React.createClass({
   render() {
     return (
       <div className='container-fluid visbox'>
-        <App.AccountsUIWrapper />
-        <h1>Timesheet entry</h1>
+        <h1>NoMatch</h1>
       </div>
     );
   }

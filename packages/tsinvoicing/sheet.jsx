@@ -1,9 +1,13 @@
-App.Engineering.Entry.Sheet = React.createClass({
+Sheet = React.createClass({
+  
+  propTypes: {
+    entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired
+  },
   
   _rows() {
     return this.props.entries.map( (entry) => {
       return (
-        <EntryRow entry={entry} key={entry._id} />
+        <AccountingEntryRow entry={entry} key={entry._id} />
       );
     });
   },

@@ -1,10 +1,13 @@
-App.Engineering.Entry = React.createClass({
+TimesheetEntry = React.createClass({
+  
+  propTypes: {
+    projects: React.PropTypes.object.isRequired,
+    timesheets: React.PropTypes.object.isRequired
+  },
   
   render() {
-    if (!this.data.entriesReady || !this.data.tasksReady || !this.data.projectsReady) {
-      return (
-        <div>loading...</div>
-      );
+    if ( !this.data.projects.ready || !this.data.timesheets.ready ) {
+      return <div>loading...</div>;
     }
     
     return (

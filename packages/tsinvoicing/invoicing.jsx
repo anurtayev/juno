@@ -1,4 +1,4 @@
-App.Accounting.Invoicing = React.createClass({
+Invoicing = React.createClass({
   
   mixins: [ReactMeteorData],
   

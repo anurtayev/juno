@@ -1,4 +1,4 @@
-AccountingEntryRow = React.createClass({
+EntryRow = React.createClass({
   
   propTypes: {
     entry: React.PropTypes.object.isRequired

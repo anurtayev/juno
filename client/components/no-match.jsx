@@ -1,4 +1,4 @@
-App.NoMatch = React.createClass({
+NoMatch = React.createClass({
   render() {
     return (
       <div id='App.NoMatch' className='container-fluid visbox'>
