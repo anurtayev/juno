@@ -1,0 +1,16 @@
+mongo:
+  image: mongo
+  ports:
+    - "27017:27017"
+    
+meteor:
+  build: .
+  volumes:
+    - .:/app 
+  working_dir: /app
+  ports:
+    - "3000:3000"
+  links:
+    - mongo
+  environment:
+    - MONGO_URL=mongodb://mongo:27017/test
