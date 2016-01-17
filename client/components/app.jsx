@@ -10,7 +10,7 @@ App = React.createClass({
         },
         
         name() {
-          return this.isAuthenticated() ? Meteor.user().username : '';
+          return this.isAuthenticated() && Meteor.user() ? Meteor.user().username : '';
         },
         
         role() {
@@ -26,9 +26,12 @@ App = React.createClass({
   },
   
   componentDidMount(prevProps, prevState) {
+    console.log(this.data.user.isAuthenticated());
+    console.log(this.data.user.name());
+    console.log(this.data.user.role());
     if ( !prevState || prevState.username !== this.data.user.name() ) {
       this.setState({ username: this.data.user.name() });
-      this.props.history.push(`/${this.getRole()}`);
+      this.props.history.push(`/${this.data.user.role()}`);
     }
   },
   
