@@ -1,4 +1,4 @@
-Meteor.publish('App.Accounting.', function () {
+Meteor.publish('Entries.accounting', function () {
   if (!this.userId) {
     return this.ready();
   }
@@ -6,7 +6,7 @@ Meteor.publish('App.Accounting.', function () {
   return Entries.find({ invoiced: false, submited: true });
 });
 
-Meteor.publish('entries.entry', function () {
+Meteor.publish('Entries.engineering', function () {
   if (!this.userId) {
     console.log('entries.entry: no user!');
     return this.ready();
@@ -15,7 +15,7 @@ Meteor.publish('entries.entry', function () {
   return Entries.find({ userId: this.userId, submited: false });
 });
 
-Meteor.publish('App.Projects', function () {
+Meteor.publish('Projects', function () {
   if (!this.userId) {
     return this.ready();
   }

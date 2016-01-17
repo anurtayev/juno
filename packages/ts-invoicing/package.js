@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'anurtayev:tsinvoicing',
+  name: 'anurtayev:ts-invoicing',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: '',
@@ -17,13 +17,12 @@ Package.onUse(function(api) {
   
   api.export('Invoicing', 'client');
   
-  
   api.addFiles('invoicing.jsx');
 });
 
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('anurtayev:tsinvoicing');
-  api.addFiles('tsinvoicing-tests.js');
+  api.use('anurtayev:ts-invoicing');
+  api.addFiles('ts-invoicing-tests.js');
 });

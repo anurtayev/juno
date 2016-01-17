@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'anurtayev:tsentry',
+  name: 'anurtayev:ts-etnry',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: '',
@@ -13,16 +13,13 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
-  api.use('react');
-  
+  api.addFiles('ts-etnry.js');
   api.export('TimesheetEntry', 'client');
-  
-  api.addFiles(['timesheet-entry.jsx']);
 });
 
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('anurtayev:tsentry');
-  api.addFiles('tsentry-tests.js');
+  api.use('anurtayev:ts-etnry');
+  api.addFiles('ts-etnry-tests.js');
 });

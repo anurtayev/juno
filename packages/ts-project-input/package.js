@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'anurtayev:tsprojectentry',
+  name: 'anurtayev:ts-project-input',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: '',
@@ -13,12 +13,12 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
-  api.addFiles('tsprojectentry.js');
+  api.addFiles('ts-project-input.js');
 });
 
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('anurtayev:tsprojectentry');
-  api.addFiles('tsprojectentry-tests.js');
+  api.use('anurtayev:ts-project-input');
+  api.addFiles('ts-project-input-tests.js');
 });
