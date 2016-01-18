@@ -16,7 +16,8 @@ Engineering = React.createClass({
   
   render() {
     return 
-      React.cloneElement( 
+      <div>
+      {React.cloneElement( 
         this.props.children, 
         {
           entries: this.data.entries,
@@ -24,6 +25,7 @@ Engineering = React.createClass({
           projects: this.props.projects,
           projectsReady: this.props.projectsReady
         }
-      );
+      )}
+      </div>;
   }
 });

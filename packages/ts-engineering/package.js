@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'anurtayev:ts-etnry',
+  name: 'anurtayev:ts-engineering',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: '',
@@ -14,13 +14,17 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
   api.use('react');
-  api.addFiles('ts-etnry.jsx');
-  api.export('Entry', 'client');
+  
+  api.export('Engineering', 'client');
+  api.export('EngineeringToolbar', 'client');
+  
+  api.addFiles('ts-engineering.jsx');
+  api.addFiles('ts-engineering-toolbar.jsx');
 });
 
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('anurtayev:ts-etnry');
-  api.addFiles('ts-etnry-tests.js');
+  api.use('anurtayev:ts-engineering');
+  api.addFiles('ts-engineering-tests.js');
 });

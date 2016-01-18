@@ -34,14 +34,18 @@ App = React.createClass({
   
   render() {
     return (
-      <div className='container-fluid'>
-        {React.cloneElement(
-            this.props.children, 
-            {
-              projects: this.data.projects,
-              projectsReady: this.data.projectsReady,
-            }
-        )}
+      <div>
+        <div>
+          <div>
+            <AccountsUI />
+          </div>
+          <div>
+            {toolbar}
+          </div>
+        </div>
+        <div>
+          {workbench}
+        </div>
       </div>
     );
   }

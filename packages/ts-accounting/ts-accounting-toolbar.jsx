@@ -1,4 +1,4 @@
-Header = React.createClass({
+AccountingToolbar = React.createClass({
   render() {
     return (
       <div className='container-fluid visbox'>
