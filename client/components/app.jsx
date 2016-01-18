@@ -4,30 +4,16 @@ App = React.createClass({
   
   getMeteorData() {
     return { 
-      isAuthenticated: this.isAuthenticated(),
-      userName: this.getUserName(),
-      role: this.getRole(),
+      role: Meteor.user() ? Meteor.user().username === 'elmira' ? 'accounting' : 'engineering' : '',
         
       projects: Projects.find({}).fetch(),
       projectsReady: Meteor.subscribe('Projects').ready()
     };
   },
   
-  isAuthenticated() {
-    return Meteor.userId() !== null;
-  },
-  
-  getUserName() {
-    return this.isAuthenticated() && Meteor.user() ? Meteor.user().username : '';
-  },
-  
-  getRole() {
-    return this.getUserName() ? this.getUserName() === 'elmira' ? 'accounting' : 'engineering' : '';
-  },
-        
-  componentDidMount(prevProps, prevState) {
-    if ( !prevState || prevState.username !== this.data.userName ) {
-      this.setState({ username: this.data.userName });
+  componentDidUpdate(prevProps, prevState) {
+    if ( !prevState || prevState.role !== this.data.role ) {
+      this.setState({ role: this.data.role });
       this.props.history.push(`/${this.data.role}`);
     }
   },
@@ -40,11 +26,13 @@ App = React.createClass({
             <AccountsUI />
           </div>
           <div>
-            {toolbar}
+            {this.props.toolbar}
           </div>
         </div>
         <div>
-          {workbench}
+          {React.cloneElement(this.props.workbench, {
+            str1: 'quak'
+          })}
         </div>
       </div>
     );

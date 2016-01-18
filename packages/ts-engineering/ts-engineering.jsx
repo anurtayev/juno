@@ -1,10 +1,4 @@
 Engineering = React.createClass({
-  
-  propTypes: {
-    projects: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired,
-    projectsReady: React.PropTypes.bool.isRequired
-  },
-  
   mixins: [ReactMeteorData],
   
   getMeteorData() {
@@ -15,6 +9,6 @@ Engineering = React.createClass({
   },
   
   render() {
-    return <div>{this.props.children}</div>;
+    return <div id='Engineering' className='visbox'><div>ccccc{this.props.str1}</div><div>{this.props.children}</div></div>;
   }
 });
