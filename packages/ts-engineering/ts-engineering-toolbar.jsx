@@ -1,5 +1,5 @@
 EngineeringToolbar = React.createClass({
   render() {
-    return <div id='EngineeringToolbar'><h1>EngineeringToolbar</h1></div>;
+    return <div id='EngineeringToolbar' className='visbox'><h3>EngineeringToolbar</h3></div>;
   }
 });

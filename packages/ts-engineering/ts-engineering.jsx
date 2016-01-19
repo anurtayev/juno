@@ -1,7 +1,8 @@
 Engineering = React.createClass({
   
   propTypes: {
-    lopa: React.PropTypes.string.isRequired
+    projects: React.PropTypes.arrayOf( React.PropTypes.object ),
+    projectsReady: React.PropTypes.bool
   },
   
   mixins: [ReactMeteorData],
@@ -14,6 +15,11 @@ Engineering = React.createClass({
   },
   
   render() {
-    return <div id='Engineering' className='visbox'><div>ccccc{this.props.lopa}</div><div>{this.props.children}</div></div>;
+    return React.cloneElement( this.props.children, {
+        projects: this.props.projects,
+        projectsReady: this.props.projectsReady,
+        entries: this.data.entries,
+        entriesReady: this.data.entriesReady
+      });
   }
 });

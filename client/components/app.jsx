@@ -6,8 +6,6 @@ App = React.createClass({
     return { 
       role: Meteor.user() ? Meteor.user().username === 'elmira' ? 'accounting' : 'engineering' : '',
         
-      lopa: 'lops',
-      
       projects: Projects.find({}).fetch(),
       projectsReady: Meteor.subscribe('Projects').ready()
     };
@@ -33,7 +31,8 @@ App = React.createClass({
         </div>
         <div>
           {React.cloneElement(this.props.workbench, {
-            lopa: 'doflert' 
+            projects: this.data.projects,
+            projectsReady: this.data.projectsReady
           })}
         </div>
       </div>
