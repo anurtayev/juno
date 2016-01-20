@@ -24,10 +24,5 @@ twbs:bootstrap
 pfafman:filesaver
 momentjs:moment
 harrison:papa-parse
-anurtayev:ts-etnry
-anurtayev:ts-invoicing
-anurtayev:ts-project-input
-anurtayev:ts-accounting
-anurtayev:ts-engineering
 aldeed:simple-schema
 aldeed:autoform

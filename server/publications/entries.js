@@ -1,3 +1,6 @@
+import {Entries, Projects} from '/lib/collections';
+import {Meteor} from 'meteor/meteor';
+
 Meteor.publish('Entries.accounting', function () {
   if (!this.userId) {
     return this.ready();
@@ -11,14 +14,6 @@ Meteor.publish('Entries.engineering', function () {
     console.log('entries.entry: no user!');
     return this.ready();
   }
-  
-  return Entries.find({ userId: this.userId, submited: false });
-});
 
-Meteor.publish('Projects', function () {
-  if (!this.userId) {
-    return this.ready();
-  }
-  
-  return Projects.find({});
+  return Entries.find({ userId: this.userId, submited: false });
 });
