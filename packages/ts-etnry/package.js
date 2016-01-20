@@ -14,6 +14,9 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
   api.use('react');
+  
+  api.use('aldeed:autoform@5.0.0');
+  
   api.addFiles('ts-etnry.jsx');
   api.export('Entry', 'client');
 });

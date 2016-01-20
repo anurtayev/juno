@@ -13,3 +13,8 @@
 .projectRow:hover {
   background: #80b3ff;
 }
+
+table {
+  width: 100%;
+  border-width: 1px solid black;
+}
