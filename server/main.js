@@ -1,3 +1,3 @@
-import addInitialData from './config/initdata';
+import addInitialData from './configs/initdata';
 
 addInitialData();
