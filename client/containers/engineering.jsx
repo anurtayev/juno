@@ -1,8 +1,8 @@
 Engineering = React.createClass({
   
   propTypes: {
-    projects: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired,
-    projectsReady: React.PropTypes.bool.isRequired
+    projects: React.PropTypes.arrayOf( React.PropTypes.object ),
+    projectsReady: React.PropTypes.bool
   },
   
   mixins: [ReactMeteorData],
@@ -15,17 +15,11 @@ Engineering = React.createClass({
   },
   
   render() {
-    return 
-      <div>
-      {React.cloneElement( 
-        this.props.children, 
-        {
-          entries: this.data.entries,
-          entriesReady: this.data.entriesReady,
-          projects: this.props.projects,
-          projectsReady: this.props.projectsReady
-        }
-      )}
-      </div>;
+    return React.cloneElement( this.props.children, {
+        projects: this.props.projects,
+        projectsReady: this.props.projectsReady,
+        entries: this.data.entries,
+        entriesReady: this.data.entriesReady
+      });
   }
 });

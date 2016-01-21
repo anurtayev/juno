@@ -1,13 +1,10 @@
-const {Router, Route, history, IndexRoute} = ReactRouter;
+import React from 'meteor/react';
+import {Router, Route, history, IndexRoute} from 'meteor/reactrouter:react-router';
 
 const browserHistory=history.createHistory();
 
-Accounts.ui.config({
-  passwordSignupFields: 'USERNAME_ONLY'
-});
-
-Meteor.startup( () => {
-  ReactDOM.render((
+export default class Router extends React.Component {
+  render() {
     <Router history={browserHistory}>
       <Route path='/' component={App}>
         <IndexRoute components={{ toolbar: null, workbench: Dashboard }}/>
@@ -22,5 +19,5 @@ Meteor.startup( () => {
         <Route path='*' component={NoMatch} />
       </Route>
     </Router>
-  ), root);
-});
+  }
+}
