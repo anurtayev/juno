@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/anurtayev/juno#readme",
   "dependencies": {
-    "react": "^0.14.6",
     "react-komposer": "^1.2.1"
   }
 }

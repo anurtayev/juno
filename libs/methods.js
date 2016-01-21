@@ -1,4 +1,4 @@
-import {Entries, Projects} from '/lib/collections';
+import {Entries, Projects} from '/libs/collections';
 import {Meteor} from 'meteor/meteor';
 
 Meteor.methods({

@@ -3,7 +3,7 @@ import {Router, Route, history, IndexRoute} from 'meteor/reactrouter:react-route
 
 const browserHistory=history.createHistory();
 
-export default class Router extends React.Component {
+export default class RouterComponent extends React.Component {
   render() {
     <Router history={browserHistory}>
       <Route path='/' component={App}>

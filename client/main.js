@@ -1,6 +1,6 @@
 import Accounts from 'meteor/accounts-ui';
 import ReactDOM from 'meteor/react';
-import Router from './components/router';
+import RouterComponent from './components/router';
 
 Accounts.ui.config({ passwordSignupFields: 'USERNAME_ONLY' });
 

@@ -1,4 +1,4 @@
-import {Projects} from '/lib/collections';
+import {Projects} from '/libs/collections';
 
 export default function () {
   const tasks = [

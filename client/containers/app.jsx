@@ -1,6 +1,7 @@
 import React from 'react';
+import ReactMeteorData from 'meteor/react-meteor-data';
 
-App = React.createClass({
+export default class App extends React.Component {
   
   mixins: [ReactMeteorData],
   
@@ -40,4 +41,4 @@ App = React.createClass({
       </div>
     );
   }
-});
+}
