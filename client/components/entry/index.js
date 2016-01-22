@@ -1,5 +1,5 @@
-import entry from './entry';
-import entryToolbar from './toolbar';
+import entry from './entry.jsx';
+import entryToolbar from './toolbar.jsx';
 
 export default {
   entry,

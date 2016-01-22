@@ -1,5 +1,5 @@
-import invoicing from './invoicing';
-import invoicingToolbar from './toolbar';
+import invoicing from './invoicing.jsx';
+import invoicingToolbar from './toolbar.jsx';
 
 export default {
   invoicing,

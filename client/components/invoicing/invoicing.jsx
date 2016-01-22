@@ -1,4 +1,4 @@
-import React from 'meteor/react';
+import React from 'react';
 
 export default class Invoicing extends React.Component {
   

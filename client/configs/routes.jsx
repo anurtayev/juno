@@ -1,13 +1,15 @@
 import React from 'meteor/react';
-import {Router, Route, history, IndexRoute} from 'meteor/reactrouter:react-router';
-import layout from '../components/layout';
-import dashboard from '../components/dashboard';
-import noMatch from '../components/no-match';
+import ReactRouter from 'meteor/reactrouter:react-router';
+import layout from '../components/layout/index.jsx';
+import dashboard from '../components/dashboard/index.jsx';
+import noMatch from '../components/no-match/index.jsx';
 import { entry, entryToolbar } from '../components/entry';
 import { invoicing, invoicingToolbar } from '../components/invoicing';
 
-
-const browserHistory=history.createHistory();
+console.log('sdfsdfsf');
+console.log(ReactRouter);
+// const {Router, Route, history, IndexRoute} = ReactRouter;
+const browserHistory = ReactRouter.history.createHistory();
 
 export default class Routes extends React.Component {
   render() {
