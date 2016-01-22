@@ -1,4 +1,7 @@
-AccountsUI = React.createClass({
+import React from 'meteor/react';
+
+default export class AccountsUI extends React.Component {
+
   componentDidMount() {
     // Use Meteor Blaze to render login buttons
     this.view = Blaze.render(Template.loginButtons,
@@ -12,4 +15,4 @@ AccountsUI = React.createClass({
     // Just render a placeholder container that will be filled in
     return <span ref='container' />;
   }
-});
+}

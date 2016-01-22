@@ -1,4 +1,6 @@
-Accounting = React.createClass({
+import React from 'meteor/react';
+
+default export class Accounting extends React.Component {
   render() {
     return (
       <div className='container-fluid visbox'>
@@ -7,4 +9,4 @@ Accounting = React.createClass({
       </div>
     );
   }
-});
+}

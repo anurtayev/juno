@@ -1,5 +1,7 @@
 Entry = React.createClass({
   
+  
+  
   propTypes: {
     projects: React.PropTypes.arrayOf( React.PropTypes.object ),
     projectsReady: React.PropTypes.bool,

@@ -1,4 +1,6 @@
-NoMatch = React.createClass({
+import React from 'meteor/react';
+
+default export class NoMatch extends React.Component {
   render() {
     return (
       <div id='NoMatch' className='container-fluid visbox'>
@@ -6,4 +8,4 @@ NoMatch = React.createClass({
       </div>
     );
   }
-});
+}
