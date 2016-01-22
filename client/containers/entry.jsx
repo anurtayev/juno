@@ -1,40 +1,15 @@
 import React from 'meteor/react';
 
-default export class Entry extends React.Component {
-  
-    mixins: [ReactMeteorData],
+export default class Entry extends React.Component {
   
   getMeteorData() {
     return { 
-      role: Meteor.user() ? Meteor.user().username === 'elmira' ? 'accounting' : 'engineering' : '',
-        
       projects: Projects.find({}).fetch(),
-      projectsReady: Meteor.subscribe('Projects').ready()
-    };
-  },
-  
-  componentDidUpdate(prevProps, prevState) {
-    if ( !prevState || prevState.role !== this.data.role ) {
-      this.setState({ role: this.data.role });
-      this.props.history.push(`/${this.data.role}`);
-    }
-  },
-  
-
-  
-  propTypes: {
-    projects: React.PropTypes.arrayOf( React.PropTypes.object ),
-    projectsReady: React.PropTypes.bool
-  },
-  
-  mixins: [ReactMeteorData],
-  
-  getMeteorData() {
-    return {
+      projectsReady: Meteor.subscribe('Projects').ready(),
       entries: Entries.find({ userId: Meteor.userId(), submited: false }, {sort: {createdAt: -1}}).fetch(),
       entriesReady: Meteor.subscribe('Entries.engineering').ready()
     };
-  },
+  }
   
   render() {
     return React.cloneElement( this.props.children, {
@@ -44,4 +19,4 @@ default export class Entry extends React.Component {
         entriesReady: this.data.entriesReady
       });
   }
-});
+}

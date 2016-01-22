@@ -1,6 +1,6 @@
-Invoicing = React.createClass({
-  
-  mixins: [ReactMeteorData],
+import React from 'meteor/react';
+
+export default class Invoicing extends React.Component {
   
   getMeteorData() {
     const accountingDataHandle = Meteor.subscribe('accounting');
@@ -9,7 +9,7 @@ Invoicing = React.createClass({
       accountingReady: accountingDataHandle.ready(),
       accountingData: Entries.find({ invoiced: false, submited: true }).fetch(),
     };
-  },
+  }
   
   render() {
     if (!this.data.accountingReady) {
@@ -28,4 +28,4 @@ Invoicing = React.createClass({
       </div>
     );
   }
-});
+}

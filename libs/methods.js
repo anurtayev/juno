@@ -1,5 +1,5 @@
 import {Entries, Projects} from '/libs/collections';
-import {Meteor} from 'meteor/meteor';
+// import {Meteor} from 'meteor/meteor';
 
 Meteor.methods({
   'entries.submit'() {

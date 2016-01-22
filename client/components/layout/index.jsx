@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactMeteorData from 'meteor/react-meteor-data';
 
-export default class App extends React.Component {
+export default class Layout extends React.Component {
   render() {
     return (
       <div>

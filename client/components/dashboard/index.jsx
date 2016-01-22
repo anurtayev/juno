@@ -1,6 +1,6 @@
 import React from 'meteor/react';
 
-default export class Dashboard extends React.Component {
+export default class Dashboard extends React.Component {
   render() {
     return (
       <div id='Dashboard' className='container-fluid visbox'>
