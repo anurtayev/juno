@@ -1,9 +1,7 @@
-EntryRow = React.createClass({
-  
-  propTypes: {
-    entry: React.PropTypes.object.isRequired
-  },
-  
+import React from 'meteor/react';
+
+export default class EntryRow extends React.Component {
+
   render() {
     return (
       <div id="entryRow" className="row">
@@ -14,6 +12,7 @@ EntryRow = React.createClass({
         <div className="col-xs-1">{this.props.entry.hours}</div>
         <div className="col-xs-3">{this.props.entry.description}</div>
         <div className="col-xs-2">{moment(this.props.entry.createdAt).format('D-MM-YY, hh:mm')}</div>
-      </div>    );
+      </div>    
+    );
   }
-});
+}

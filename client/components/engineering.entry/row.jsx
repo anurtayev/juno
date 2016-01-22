@@ -1,12 +1,14 @@
-EntryRow = React.createClass({
+import React from 'meteor/react';
+
+export default class EntryRow extends React.Component {
   
   deleteEntry() {
     Meteor.call('deleteEntry', this.props.entry._id);
-  },
+  }
   
   copyEntry() {
     Meteor.call('copyEntry', this.props.entry._id);
-  },
+  }
   
   render() {
     return (
@@ -22,4 +24,4 @@ EntryRow = React.createClass({
         <div className="col-xs-2">{moment(this.props.entry.createdAt).format('D-MM-YY, hh:mm')}</div>
       </div>    );
   }
-});
+}

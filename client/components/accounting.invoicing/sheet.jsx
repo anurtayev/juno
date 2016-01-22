@@ -1,16 +1,14 @@
-Sheet = React.createClass({
-  
-  propTypes: {
-    entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired
-  },
-  
+import React from 'meteor/react';
+
+export default class Sheet extends React.Component {
+
   _rows() {
     return this.props.entries.map( (entry) => {
       return (
         <AccountingEntryRow entry={entry} key={entry._id} />
       );
     });
-  },
+  }
   
   render() {
     return (
@@ -19,4 +17,4 @@ Sheet = React.createClass({
       </div>
     );
   }
-});
+}

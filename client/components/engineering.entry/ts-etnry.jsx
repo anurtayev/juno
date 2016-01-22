@@ -1,14 +1,6 @@
-Entry = React.createClass({
-  
-  
-  
-  propTypes: {
-    projects: React.PropTypes.arrayOf( React.PropTypes.object ),
-    projectsReady: React.PropTypes.bool,
-    entries: React.PropTypes.arrayOf( React.PropTypes.object ),
-    entriesReady: React.PropTypes.bool
-  },
-  
+import React from 'meteor/react';
+
+export default class Entry extends React.Component {
   render() {
     return (
       <div className='container-fluid visbox'>
@@ -56,4 +48,4 @@ Entry = React.createClass({
       </div>
     );
   }
-});
+}

@@ -1,14 +1,10 @@
-TaskInput = React.createClass({
-  
-  propTypes: {
-    tasks: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired,
-    value: React.PropTypes.object.isRequired,
-    onUpdate: React.PropTypes.func.isRequired
-  },
+import React from 'meteor/react';
+
+export default class TaskInput extends React.Component {
   
   handleChange(e){
     this.props.onUpdate( e.target.value );
-  },
+  }
   
   _tasksMarkup(e){
     return this.props.tasks.map( (task) => {
@@ -16,7 +12,7 @@ TaskInput = React.createClass({
         <option value={task._id} key={task._id}>{task.text}</option>
       );
     });
-  },
+  }
   
   render() {
     return (
@@ -28,4 +24,4 @@ TaskInput = React.createClass({
       </div>
     );
   }
-});
+}

@@ -1,4 +1,6 @@
-EntryForm = React.createClass({
+import React from 'meteor/react';
+
+export default class EntryForm extends React.Component {
   
   getInitialState() {
       return {
@@ -6,7 +8,7 @@ EntryForm = React.createClass({
         projectInput: '',
         task: this.props.tasks[0]
       };
-  },
+  }
   
   handleProjectChange( projectId ) {
     const newProject = this.resolveProject( projectId );
@@ -15,7 +17,7 @@ EntryForm = React.createClass({
     } else {
       this.setState({ project: newProject, projectInput: projectId });
     }
-  },
+  }
   
   resolveProject( projectId ) {
     let resolved = null;
@@ -28,12 +30,12 @@ EntryForm = React.createClass({
 
     console.log( resolved );
     return resolved;
-  },
+  }
   
   handleTaskChange( taskId ) {
     console.log( `@parent task set to : ${taskId}` );
     this.setState({ task: this.resolveTask( taskId ) });
-  },
+  }
   
   resolveTask( taskId ) {
     let resolved = null;
@@ -43,7 +45,7 @@ EntryForm = React.createClass({
       }
     });
     return resolved;
-  },
+  }
   
   handleSubmit(event) {
     
@@ -63,7 +65,7 @@ EntryForm = React.createClass({
     });
     
     this.clearForm();
-  },
+  }
   
   clearForm() {
     this.setState({
@@ -73,8 +75,8 @@ EntryForm = React.createClass({
     });
     ReactDOM.findDOMNode(this.refs.hours).value = '';
     ReactDOM.findDOMNode(this.refs.description).value = '';
-  },
-  
+  }
+ 
   _hours() {
     return (
       <div className="form-group">
@@ -82,7 +84,7 @@ EntryForm = React.createClass({
         <input type="text" ref="hours" id="hoursInput" placeholder="Number of hours" className="form-control" autoComplete="off" />
       </div>
     ); 
-  },
+  }
   
   _description() {
     return (
@@ -91,7 +93,7 @@ EntryForm = React.createClass({
         <input type="text" ref="description" id="descriptionInput" placeholder="Type to add description" className="form-control" />
       </div>
     );
-  },
+  }
   
   _submit() {
     return (
@@ -99,7 +101,7 @@ EntryForm = React.createClass({
         <button type="submit" className="btn btn-primary">Submit entry</button>
       </div>
     );
-  },
+  }
   
   render() {
     return (
@@ -118,4 +120,4 @@ EntryForm = React.createClass({
       </form>
     );
   }
-});
+}

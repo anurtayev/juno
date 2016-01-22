@@ -1,9 +1,6 @@
-TimesheetEntry = React.createClass({
-  
-  propTypes: {
-    projects: React.PropTypes.object.isRequired,
-    timesheets: React.PropTypes.object.isRequired
-  },
+import React from 'meteor/react';
+
+export default class TimesheetEntry extends React.Component {
   
   render() {
     if ( !this.data.projects.ready || !this.data.timesheets.ready ) {
@@ -22,4 +19,4 @@ TimesheetEntry = React.createClass({
       </div>
     );
   }
-});
+}
