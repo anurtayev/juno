@@ -1,6 +1,6 @@
 import React from 'meteor/react';
 
-export default class Entry extends React.Component {
+class Entry extends React.Component {
   render() {
     return (
       <div className='container-fluid visbox'>
@@ -49,3 +49,5 @@ export default class Entry extends React.Component {
     );
   }
 }
+
+export default Entry;

@@ -1,6 +1,6 @@
 import React from 'meteor/react';
 
-export default class AccountingToolbar extends React.Component {
+export default class InvoicingToolbar extends React.Component {
   
   saveInvoice() {
     let csvString = Papa.unparse(Entries.find({}).fetch(), { newline: "\r\n" });

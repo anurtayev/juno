@@ -6,9 +6,6 @@ import {Meteor} from 'meteor/meteor';
 export function initContext() {
   return {
     Meteor,
-    FlowRouter,
-    Collections,
-    LocalState: new ReactiveDict(),
-    Tracker
+    Collections
   };
 }
