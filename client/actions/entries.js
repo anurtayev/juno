@@ -21,5 +21,12 @@ export default {
 
   clearErrors({LocalState}) {
     return LocalState.set('SAVING_ERROR', null);
+  },
+  
+  invoice({Meteor, LocalState, FlowRouter}) {
+    let csvString = Papa.unparse(Entries.find({}).fetch(), { newline: "\r\n" });
+    saveAs(new Blob([csvString], { type: "text/plain;charset=utf-8" }), 'export.csv');
+    Meteor.call('invoice');
+    FlowRouter.go(`/invoicing`);
   }
 };
