@@ -6,7 +6,7 @@ import {mount} from 'react-mounter';
 import MainLayout from '../components/layouts.main/index.jsx';
 import Entries from '../containers/entries';
 import Edit from '../containers/edit';
-import Dashboard from '../components/dashboard';
+import Dashboard from '../components/dashboard/index.jsx';
 
 export const initRoutes = (context, actions) => {
   const MainLayoutCtx = injectDeps(context, actions)(MainLayout);

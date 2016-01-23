@@ -1,5 +1,5 @@
 // import Accounts from 'meteor/accounts-ui';
-import initMethods from './configs/method_stubs';
+import initMethods from '/libs/methods';
 import {initContext} from './configs/context';
 import {initRoutes} from './configs/routes.jsx';
 import actions from './actions';

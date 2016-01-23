@@ -1,9 +1,14 @@
+import Papa from 'meteor/harrison:papa-parse';
+import saveAs from 'meteor/pfafman:filesaver';
+
 export default {
   insert({Meteor, LocalState, FlowRouter}, entry) {
-    // validation
     if (
-        !entry.title || 
-        !entry.content
+        !entry.date || 
+        !entry.projectCode || 
+        !entry.projectName || 
+        !entry.projecTask || 
+        !entry.hours 
     ) {
       return LocalState.set('SAVING_ERROR', 'required values are missing...');
     }
@@ -23,8 +28,8 @@ export default {
     return LocalState.set('SAVING_ERROR', null);
   },
   
-  invoice({Meteor, LocalState, FlowRouter}) {
-    let csvString = Papa.unparse(Entries.find({}).fetch(), { newline: "\r\n" });
+  invoice({Meteor, LocalState, FlowRouter, Collections}) {
+    let csvString = Papa.unparse(Collections.Entries.find({}).fetch(), { newline: "\r\n" });
     saveAs(new Blob([csvString], { type: "text/plain;charset=utf-8" }), 'export.csv');
     Meteor.call('invoice');
     FlowRouter.go(`/invoicing`);
