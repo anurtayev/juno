@@ -1,5 +1,5 @@
-import { React, ReactDOM } from 'meteor/react';
-import { Blaze } from 'meteor/blaze-html-templates';
+import React from 'react';
+import { Blaze } from 'meteor/blaze';
 
 export default class AccountsUI extends React.Component {
 

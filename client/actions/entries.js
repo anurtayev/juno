@@ -1,5 +1,5 @@
 export default {
-  create({Meteor, LocalState, FlowRouter}, entry) {
+  insert({Meteor, LocalState, FlowRouter}, entry) {
     // validation
     if (
         !entry.title || 

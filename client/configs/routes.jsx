@@ -4,9 +4,9 @@ import {FlowRouter} from 'meteor/kadira:flow-router';
 import {mount} from 'react-mounter';
 
 import MainLayout from '../components/layouts.main/index.jsx';
-import PostList from '../containers/postlist';
-import Post from '../containers/post';
-import NewPost from '../containers/newpost';
+import Entries from '../containers/entries';
+import Edit from '../containers/edit';
+import Dashboard from '../components/dashboard';
 
 export const initRoutes = (context, actions) => {
   const MainLayoutCtx = injectDeps(context, actions)(MainLayout);
@@ -16,35 +16,27 @@ export const initRoutes = (context, actions) => {
     name: 'dashboard',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<PostList />)
+        content: () => (<Dashboard/>)
       });
     }
   });
 
-  FlowRouter.route('/entry', {
-    name: 'posts.single',
-    action({postId}) {
-      mount(MainLayoutCtx, {
-        content: () => (<Post postId={postId}/>)
-      });
-    }
-  });
-
-  FlowRouter.route('/entry/:entryId', {
-    name: 'newpost',
+  FlowRouter.route('/entries', {
+    name: 'entries',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<NewPost/>)
+        content: () => (<Entries/>)
       });
     }
   });
 
-  FlowRouter.route('/invoicing', {
-    name: 'newpost',
-    action() {
+  FlowRouter.route('/edit/:entryId', {
+    name: 'edit',
+    action({entryId}) {
       mount(MainLayoutCtx, {
-        content: () => (<NewPost/>)
+        content: () => (<Edit entryId={entryId}/>)
       });
     }
   });
+
 };
