@@ -5,8 +5,8 @@ export default (props) => (
   <div>
   
     <div>
-      <button type="button" className="btn btn-default" onClick={this.handleSubmit} >New</button>
-      <button type="button" className="btn btn-default" onClick={this.handleSubmit} >Invoice</button>
+      <button type="button" className="btn btn-primary" onClick={this.handleSubmit} >New</button>
+      <button type="button" className="btn btn-primary" onClick={this.handleSubmit} >Invoice</button>
     </div>
     
     <table className='table'>

@@ -1,4 +1,4 @@
-// import Accounts from 'meteor/accounts-ui';
+import {Accounts} from 'meteor/accounts-base';
 import initMethods from '/libs/methods';
 import {initContext} from './configs/context';
 import {initRoutes} from './configs/routes.jsx';
@@ -8,4 +8,4 @@ initMethods();
 const context = initContext();
 initRoutes(context, actions);
 
-// Accounts.ui.config({ passwordSignupFields: 'USERNAME_ONLY' });
+Accounts.ui.config({ passwordSignupFields: 'USERNAME_ONLY' });

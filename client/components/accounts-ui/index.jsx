@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Blaze } from 'meteor/blaze';
 
 export default class AccountsUI extends React.Component {
