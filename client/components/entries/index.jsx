@@ -4,10 +4,11 @@ import moment from 'meteor/momentjs:moment';
 export default (props) => (
   <div>
   
-    <div>
+    <header>
       <button type="button" className="btn btn-primary" onClick={this.handleSubmit} >New</button>
       <button type="button" className="btn btn-primary" onClick={this.handleSubmit} >Invoice</button>
-    </div>
+      <button type="button" className="btn btn-primary" onClick={this.handleSubmit} >{props.mode}</button>
+    </header>
     
     <table className='table'>
       <thead>

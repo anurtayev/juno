@@ -21,11 +21,20 @@ export const initRoutes = (context, actions) => {
     }
   });
 
-  FlowRouter.route('/entries', {
-    name: 'entries',
+  FlowRouter.route('/engineering', {
+    name: 'engineering',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<Entries/>)
+        content: () => (<Entries mode='engineering'/>)
+      });
+    }
+  });
+
+  FlowRouter.route('/accounting', {
+    name: 'accounting',
+    action() {
+      mount(MainLayoutCtx, {
+        content: () => (<Entries mode='accounting'/>)
       });
     }
   });
@@ -35,6 +44,15 @@ export const initRoutes = (context, actions) => {
     action({entryId}) {
       mount(MainLayoutCtx, {
         content: () => (<Edit entryId={entryId}/>)
+      });
+    }
+  });
+
+  FlowRouter.route('/newentry', {
+    name: 'newentry',
+    action() {
+      mount(MainLayoutCtx, {
+        content: () => (<Edit/>)
       });
     }
   });
