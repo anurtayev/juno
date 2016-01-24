@@ -3,7 +3,7 @@ import {injectDeps} from 'react-simple-di';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {mount} from 'react-mounter';
 
-import MainLayout from '../components/layouts.main/index.jsx';
+import MainLayout from '../containers/layout';
 import Entries from '../containers/entries';
 import Edit from '../containers/edit';
 import Dashboard from '../components/dashboard/index.jsx';

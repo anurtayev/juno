@@ -1,25 +1,35 @@
 import React from 'react';
 import AccountsUI from '../accounts-ui/index.jsx';
 import {FlowRouter} from 'meteor/kadira:flow-router';
-import ReactMeteorData from 'meteor/react-meteor-data';
 import {Meteor} from 'meteor/meteor';
-import reactMixin from 'react-mixin';
 
-
-class MainLayout extends React.Component {
+export default class MainLayout extends React.Component {
   
-  getMeteorData() { 
-    console.log('rrrrrr');
-    console.log(Meteor.user());
-    return {
-      username: Meteor.user() ? Meteor.user().username : ''
-    };
+  componentDidUpdate() {
+    this.route();
+  }
+  
+  componentDidMount() {
+    this.route();
+  }
+  
+  route() {
+    console.log('routing...');
+    const route = FlowRouter.getRouteName();
+    const username = this.props.username;
+    
+    if ( username && (route !== 'entries') ) {
+      console.log('to entries');
+      FlowRouter.go('/entries');
+    }
+    
+    if ( !username && (route !== 'dashboard') ) {
+      console.log('to dashboard');
+      FlowRouter.go('/');
+    }
   }
   
   render() {
-    
-    console.log(this.data.username);
-    
     return (
       <div>
         <header>
@@ -32,7 +42,3 @@ class MainLayout extends React.Component {
     );
   }
 }
-
-reactMixin(MainLayout.prototype, ReactMeteorData);
-
-export default MainLayout;
