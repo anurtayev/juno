@@ -13,19 +13,76 @@ export default class MainLayout extends React.Component {
     this.route();
   }
   
-  route() {
-    console.log('routing...');
-    const route = FlowRouter.getRouteName();
-    const username = this.props.username;
+  getRoutingTable() {
+    return {
+      elmira: {
+        accounting: {
+          entrypoint: true
+        }
+      },
+      
+      '*': {
+        engineering: {
+          entrypoint: true
+        },
+        edit: {},
+        newentry: {}
+      }
+    } 
+  }
+  
+  getAuthorisedRoutes() {
+    const rt = this.getRoutingTable();
+    console.log(rt);
     
-    if ( username && (route !== 'entries') ) {
-      console.log('to entries');
-      FlowRouter.go('/entries');
+    let match;
+    for (let key in rt) {
+      if (key === this.props.username) {
+        match = key;
+      }
     }
     
-    if ( !username && (route !== 'dashboard') ) {
-      console.log('to dashboard');
-      FlowRouter.go('/');
+    match = !match ? '*' : match;
+    console.log(`match: ${match}`);
+    
+    return rt[match];
+  }
+
+  route() {
+    const route = FlowRouter.getRouteName();
+    console.log(`inp route: ${route}`);
+    const username = this.props.username;
+    console.log(`inp username: ${username}`);
+    
+    if ( !username ) {
+      if ( route !== 'dashboard') {
+        FlowRouter.go('/');
+      }
+      console.log('to dashboad...');
+      return;
+    }
+    
+    const ar = this.getAuthorisedRoutes();
+    
+    let authorized = false;
+    for (let k in ar) {
+      if ( k === route ) {
+        authorized = true;
+      }
+    }
+    console.log(`authorized: ${authorized}`);
+    
+    if (!authorized) {
+      // find default entry point
+      let dep;
+      for (let k in ar) {
+        if ( ar[k].entrypoint ) {
+          dep = k;
+        }
+      }
+      console.log(`fallback to default entry point: ${dep}`);
+      FlowRouter.go(`/${dep}`);
+      return;
     }
   }
   
