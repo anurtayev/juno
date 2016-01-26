@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/anurtayev/juno#readme",
   "dependencies": {
+    "material-ui": "^0.14.2",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-komposer": "^1.2.1",
     "react-mounter": "^1.0.0",
-    "react-simple-di": "^1.0.1"
+    "react-simple-di": "^1.0.1",
+    "react-tap-event-plugin": "^0.2.1"
   }
 }

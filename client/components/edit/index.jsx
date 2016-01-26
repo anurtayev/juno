@@ -1,53 +1,52 @@
 import React from 'react';
+import AppBar from 'material-ui/lib/app-bar';
+import IconButton from 'material-ui/lib/icon-button';
+import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
+import FlatButton from 'material-ui/lib/flat-button';
+
+import Divider from 'material-ui/lib/divider';
+import Paper from 'material-ui/lib/paper';
+import TextField from 'material-ui/lib/text-field';
 
 export default class Edit extends React.Component {
   render() {
     const {error} = this.props;
+    
+    const underlineStyle = {
+      display: 'none',
+    };
+    
+    const style = {
+      marginLeft: 20,
+    };
+
     return (
       <div>
-    
+        <AppBar
+          title={<span>Title</span>}
+          iconElementLeft={<IconButton onTouchTap={this.handleSubmit.bind(this)}><NavigationClose /></IconButton>}
+          iconElementRight={<FlatButton label="Save" />}
+        />
+          
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
-        
-        <form  onSubmit={this.handleSubmit.bind(this)}>
-        
-          <div class="form-group">
-            <button type="submit" className="btn btn-primary">Save</button>
-            <button type="button" className="btn btn-primary" onClick={this.handleCancel.bind(this)}>Cancel</button>
-          </div>
-          
-          <div class="form-group">
-            <label for="dateInput">Date</label>
-            <input ref="dateRef" type="text" class="form-control" id="dateInput" placeholder="Enter date"/>
-          </div>
-          
-          <div class="form-group">
-            <label for="projectInput">Project</label>
-            <input ref="projectRef" type="text" class="form-control" id="projectInput" placeholder="Enter project"/>
-          </div>
-          
-          <div class="form-group">
-            <label for="taskInput">Task</label>
-            <input ref="taskRef" type="text" class="form-control" id="taskInput" placeholder="Enter task"/>
-          </div>
-          
-          <div class="form-group">
-            <label for="hoursInput">Hours</label>
-            <input ref="hoursRef" type="text" class="form-control" id="hoursInput" placeholder="Enter hours"/>
-          </div>
-          
-          <div class="form-group">
-            <label for="descriptionInput">Description</label>
-            <input ref="descriptionRef" type="text" class="form-control" id="descriptionInput" placeholder="Enter description"/>
-          </div>
-          
-        </form>  
-      
+        <Paper zDepth={2}>
+          <TextField ref='dateRef' hintText="Date" underlineStyle={underlineStyle} style={style} />
+          <Divider />
+          <TextField hintText="Project" underlineStyle={underlineStyle} style={style} />
+          <Divider />
+          <TextField hintText="Task" underlineStyle={underlineStyle} style={style} />
+          <Divider />
+          <TextField hintText="Hours" underlineStyle={underlineStyle} style={style} />
+          <Divider />
+          <TextField hintText="Description" underlineStyle={underlineStyle} style={style} />
+          <Divider />
+        </Paper>
       </div>
     )
   }
   
   handleSubmit(event) {
-    event.preventDefault();
+    console.log('laskdlfasdjkfldsakjlasdjflsdjfkd11111111');
     
     this.props.actions().entries.insert({
       date: this.refs.dateRef.value,
