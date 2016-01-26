@@ -8,11 +8,11 @@ export default class Edit extends React.Component {
     
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
         
-        <form  onSubmit={this.handleSubmit}>
+        <form  onSubmit={this.handleSubmit.bind(this)}>
         
           <div class="form-group">
             <button type="submit" className="btn btn-primary">Save</button>
-            <button type="button" className="btn btn-primary" onClick={this.handleCancel}>Cancel</button>
+            <button type="button" className="btn btn-primary" onClick={this.handleCancel.bind(this)}>Cancel</button>
           </div>
           
           <div class="form-group">
@@ -49,7 +49,7 @@ export default class Edit extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     
-    this.props.actions.entries.insert({
+    this.props.actions().entries.insert({
       date: this.refs.dateRef.value,
       projectCode: this.refs.dateRef.value,
       projectName: this.refs.dateRef.value,
@@ -59,18 +59,18 @@ export default class Edit extends React.Component {
       submited: false,
       invoiced: false,
       createdAt: new Date(),
-      userId: this.props.context.Meteor.userId(),
-      username: this.props.context.Meteor.user().username
+      userId: this.props.context().Meteor.userId(),
+      username: this.props.context().Meteor.user().username
     });
     
-    this.navigate();
+    this.navigate(this.props.context().FlowRouter);
   }
 
-  handleCancel(event) {
-    this.navigate();
+  handleCancel() {
+    this.navigate(this.props.context().FlowRouter);
   }
   
-  navigate() {
-    this.props.context.FlowRouter.go('/engineering');
+  navigate(router) {
+    router.go('/engineering');
   }
 }
