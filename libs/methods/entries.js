@@ -5,6 +5,7 @@ import {check} from 'meteor/check';
 export default function () {
   Meteor.methods({
     'entries.insert' ( entry ) {
+      console.log('entries.insert');
       Entries.insert(entry);
     },
     

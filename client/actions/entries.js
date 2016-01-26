@@ -3,25 +3,31 @@ import saveAs from 'meteor/pfafman:filesaver';
 
 export default {
   insert({Meteor, LocalState, FlowRouter}, entry) {
+    
+    console.log('INSERT');
+    console.log(entry);
+    
     if (
         !entry.date || 
-        !entry.projectCode || 
-        !entry.projectName || 
-        !entry.projecTask || 
         !entry.hours 
     ) {
+      console.log('INSERT: SAVING_ERROR');
       return LocalState.set('SAVING_ERROR', 'required values are missing...');
+    } else {
+      console.log('INSERT: SAVING_ERROR null');
+      LocalState.set('SAVING_ERROR', null);
+
+      entry.id = Meteor.uuid();
+      Meteor.call('entries.insert', entry, (err) => {
+        if (err) {
+          console.log('INSERT: saving err');
+          return LocalState.set('SAVING_ERROR', err.message);
+        } else {
+          console.log('INSERT: forwarding');
+          FlowRouter.go(`/engineering`);
+        }
+      });
     }
-
-    LocalState.set('SAVING_ERROR', null);
-
-    entry.id = Meteor.uuid();
-    Meteor.call('entry.insert', entry, (err) => {
-      if (err) {
-        return LocalState.set('SAVING_ERROR', err.message);
-      }
-    });
-    FlowRouter.go(`/entry`);
   },
 
   clearErrors({LocalState}) {

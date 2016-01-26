@@ -1,23 +1,35 @@
 import React from 'react';
-import Table from './table.jsx';
+import EntriesTable from './entriesTable.jsx';
+import AppBar from 'material-ui/lib/app-bar';
+import FlatButton from 'material-ui/lib/flat-button';
 
-export default class Entries extends React.Component {
+export class Entries extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div>
-        <header>
-          <button type="button" className="btn btn-primary" onClick={this.navigateNewEntry.bind(this)}>New</button>
-          <button type="button" className="btn btn-primary">Invoice</button>
-          <p>{this.props.mode}</p>
-        </header>
+        <AppBar
+          title={<span>Timesheet entries</span>}
+          iconElementRight={
+            <span>
+              <FlatButton label="New" onTouchTap={this.navigateNewEntry.bind(this)}/>
+              <FlatButton label="Submit"/>
+            </span>
+          }
+        />
         
-        <Table entries={this.props.entries}/>
+        {this.props.entries.length === 0 ? null : <EntriesTable entries={this.props.entries}/>}
       </div>
     );
   }
   
-  navigateNewEntry(context) {
+  navigateNewEntry() {
     this.props.context().FlowRouter.go('/newentry');
   }
 }
+
+Counter.propTypes = { 
+  mode: React.PropTypes.string.isRequired,
+  entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired
+};
+
+export default Entries;
