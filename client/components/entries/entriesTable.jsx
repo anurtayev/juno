@@ -7,7 +7,7 @@ import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 
-export default (props) => (
+const EntriesTable = ({entries}) => (
   <Table className='table'>
     <TableHeader >
     
@@ -25,24 +25,29 @@ export default (props) => (
     </TableHeader >
     <TableBody>
     
-      {props.entries.map( entry => (
+      {entries.map( (entry) => (
+        
         <TableRow  key={entry._id}>
-          <TableRowColumn>
-            <button className="edit"  onClick={this.copyEntry}>&#x270e;</button>
-            <button className="copy"  onClick={this.copyEntry}>&#x2398;</button>
-            <button className="delete" onClick={this.deleteEntry}>&times;</button>
-          </TableRowColumn>
-          <TableRowColumn>{entry.date}</TableRowColumn>
-          <TableRowColumn>{entry.projectCode}</TableRowColumn>
-          <TableRowColumn>{entry.projectName}</TableRowColumn>
-          <TableRowColumn>{entry.projecTask}</TableRowColumn>
-          <TableRowColumn>{entry.hours}</TableRowColumn>
-          <TableRowColumn>{entry.description}</TableRowColumn>
-          <TableRowColumn className="col-xs-2">{moment(this.props.entry.createdAt).format('D-MM-YY, hh:mm')}</TableRowColumn>
+        
+          <TableRowColumn><p>qqq</p></TableRowColumn>
+          <TableRowColumn><p>aaa</p></TableRowColumn>
+          <TableRowColumn><p>{entry.projectCode}</p></TableRowColumn>
+          <TableRowColumn><p>{entry.projectName}</p></TableRowColumn>
+          <TableRowColumn><p>{entry.projecTask}</p></TableRowColumn>
+          <TableRowColumn><p>{entry.hours}</p></TableRowColumn>
+          <TableRowColumn><p>{entry.description}</p></TableRowColumn>
+          <TableRowColumn><p>iii</p></TableRowColumn>
 
         </TableRow>
+        
       ))}
       
     </TableBody>
   </Table>
 );
+
+EntriesTable.propTypes = { 
+  entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired
+};
+
+export default EntriesTable;

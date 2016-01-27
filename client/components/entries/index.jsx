@@ -5,6 +5,9 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 export class Entries extends React.Component {
   render() {
+    console.log(this.props);
+    console.log(this.props.entries);
+    console.log(this.props.entries.length);
     return (
       <div>
         <AppBar
