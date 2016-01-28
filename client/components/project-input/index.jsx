@@ -21,19 +21,19 @@ class ProjectInput extends React.Component {
   
   onFocus() {
     this.setState(this.getInitialStateValues());
-    this.props.selectedProjectOnChange(this.state.selectedProject);
+    this.props.projectOnChange(this.state.selectedProject);
   }
   
   onBlur() {
     if ( !this.state.mouseInsideTable ) this.looseFocus();
   }
   
-  selectedProjectOnChange(selectedProject) {
+  projectOnChange(selectedProject) {
     this.setState({
       selectedProject: selectedProject,
       textFieldValue: `${selectedProject.code} ${selectedProject.title} ${selectedProject.location}`
     });
-    this.props.selectedProjectOnChange(this.state.selectedProject);
+    this.props.projectOnChange(this.state.selectedProject);
     this.looseFocus();
   }
   
@@ -68,8 +68,8 @@ class ProjectInput extends React.Component {
   render() {
     return (
       <div>
-        <TextField hintText="Project" value={this.state.textFieldValue} onChange={this.onChange} onFocus={this.onFocus} onBlur={this.onBlur} underlineStyle={underlineStyle} style={style}/>
-        {this.state.focus ? <ProjectsTable projects={this.state.filteredProjects} selectedProjectOnChange={this.selectedProjectOnChange} looseFocus={this.looseFocus} onMouseInsideTable={this.onMouseInsideTable} onMouseOutsideTable={this.onMouseOutsideTable}/> : null}
+        <TextField hintText="Project" value={this.state.textFieldValue} onChange={this.onChange} onFocus={this.onFocus} onBlur={this.onBlur} underlineStyle={this.props.underlineStyle} style={this.props.style}/>
+        {this.state.focus ? <ProjectsTable projects={this.state.filteredProjects} projectOnChange={this.projectOnChange} looseFocus={this.looseFocus} onMouseInsideTable={this.onMouseInsideTable} onMouseOutsideTable={this.onMouseOutsideTable}/> : null}
       </div>
     );
   }
@@ -77,7 +77,7 @@ class ProjectInput extends React.Component {
 
 ProjectInput.propTypes = {
   projects: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired,
-  selectedProjectOnChange: React.PropTypes.func.isRequired
+  projectOnChange: React.PropTypes.func.isRequired
 };
 
 ProjectInput.displayName = 'TextField';

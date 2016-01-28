@@ -70,7 +70,7 @@ export default class Edit extends React.Component {
         <Paper zDepth={2}>
           <DatePicker ref='dateRef' hintText="Date" autoOk={true} value={this.state.date} onChange={this.dateOnChange.bind(this)} container="inline" style={style} underlineStyle={underlineStyle}/>
           <Divider />
-          <ProjectInput projects={this.props.projects} underlineStyle={underlineStyle} style={style} onChange={this.projectOnChange.bind(this)}/>
+          <ProjectInput projects={this.props.projects} underlineStyle={underlineStyle} style={style} projectOnChange={this.projectOnChange.bind(this)}/>
           <Divider />
           <TextField hintText="Task" underlineStyle={underlineStyle} style={style}/>
           <Divider />

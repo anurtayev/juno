@@ -1,4 +1,4 @@
-import {Entries, Projects} from '/libs/collections';
+import {Entries} from '/libs/collections';
 import {Meteor} from 'meteor/meteor';
 
 export default function () {
@@ -6,11 +6,11 @@ export default function () {
     return Entries.find({});
   });
 
-  Meteor.publish('Entries.accounting', function () {
+  Meteor.publish('entries.accounting', function () {
     return Entries.find({ invoiced: false, submited: true });
   });
 
-  Meteor.publish('Entries.engineering', function () {
+  Meteor.publish('entries.engineering', function () {
     return Entries.find({ userId: this.userId, submited: false });
   });
 }
