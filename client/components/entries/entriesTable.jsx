@@ -1,4 +1,4 @@
-import moment from 'meteor/momentjs:moment';
+import moment from 'moment';
 import Table from 'material-ui/lib/table/table';
 import TableBody from 'material-ui/lib/table/table-body';
 import TableFooter from 'material-ui/lib/table/table-footer';
@@ -8,7 +8,7 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 
 const EntriesTable = ({entries}) => (
-  <Table className='table'>
+  <Table>
     <TableHeader >
     
       <TableRow>
@@ -29,7 +29,7 @@ const EntriesTable = ({entries}) => (
         
         <TableRow  key={entry._id}>
         
-          <TableRowColumn><p>qqq</p></TableRowColumn>
+          <TableRowColumn><p>{moment(entry.createdAt).format('D-MM-YY')}</p></TableRowColumn>
           <TableRowColumn><p>aaa</p></TableRowColumn>
           <TableRowColumn><p>{entry.projectCode}</p></TableRowColumn>
           <TableRowColumn><p>{entry.projectName}</p></TableRowColumn>

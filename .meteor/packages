@@ -21,7 +21,6 @@ accounts-password
 reactrouter:react-router
 twbs:bootstrap
 pfafman:filesaver
-momentjs:moment
 harrison:papa-parse
 react
 kadira:flow-router

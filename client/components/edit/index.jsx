@@ -8,6 +8,7 @@ import Divider from 'material-ui/lib/divider';
 import Paper from 'material-ui/lib/paper';
 import TextField from 'material-ui/lib/text-field';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
+import ProjectInput from '../project-input/index.jsx';
 
 export default class Edit extends React.Component {
   
@@ -39,7 +40,7 @@ export default class Edit extends React.Component {
         <Paper zDepth={2}>
           <DatePicker ref='dateRef' hintText="Date" autoOk={true} value={this.state.date} onChange={this.dateOnChange.bind(this)} container="inline" style={style} underlineStyle={underlineStyle}/>
           <Divider />
-          <TextField hintText="Project" underlineStyle={underlineStyle} style={style} />
+          <ProjectInput underlineStyle={underlineStyle} style={style} />
           <Divider />
           <TextField hintText="Task" underlineStyle={underlineStyle} style={style} />
           <Divider />

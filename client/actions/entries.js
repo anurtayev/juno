@@ -39,5 +39,9 @@ export default {
     saveAs(new Blob([csvString], { type: "text/plain;charset=utf-8" }), 'export.csv');
     Meteor.call('invoice');
     FlowRouter.go(`/invoicing`);
+  },
+  
+  navigateNewEntry({FlowRouter}) {
+    FlowRouter.go('/newentry');
   }
 };

@@ -87,15 +87,6 @@ export default class MainLayout extends React.Component {
   }
   
   render() {
-    return (
-      <div>
-        <header>
-          <AccountsUI/>
-        </header>
-        <div>
-          {this.props.content()}
-        </div>
-      </div>
-    );
+    return this.props.content();
   }
 }
