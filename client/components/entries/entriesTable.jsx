@@ -32,7 +32,7 @@ const EntriesTable = ({entries}) => (
           <TableRowColumn><p>{moment(entry.createdAt).format('D-MM-YY')}</p></TableRowColumn>
           <TableRowColumn><p>aaa</p></TableRowColumn>
           <TableRowColumn><p>{entry.projectCode}</p></TableRowColumn>
-          <TableRowColumn><p>{entry.projectName}</p></TableRowColumn>
+          <TableRowColumn><p>{entry.projectTitle}</p></TableRowColumn>
           <TableRowColumn><p>{entry.projecTask}</p></TableRowColumn>
           <TableRowColumn><p>{entry.hours}</p></TableRowColumn>
           <TableRowColumn><p>{entry.description}</p></TableRowColumn>

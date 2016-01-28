@@ -43,5 +43,9 @@ export default {
   
   navigateNewEntry({FlowRouter}) {
     FlowRouter.go('/newentry');
+  },
+  
+  navigateEngineering({FlowRouter}) {
+    FlowRouter.go('/engineering');
   }
 };

@@ -2,16 +2,23 @@ import Edit from '../components/edit/index.jsx';
 import {useDeps} from 'react-simple-di';
 import {composeWithTracker, composeAll} from 'react-komposer';
 
-export const composer = (props, onData) => {
-  const {LocalState} = props.context();
-  const error = LocalState.get('SAVING_ERROR');
-  onData(null, {error});
+export const composer = ({context}, onData) => {
+  const {Meteor, Collections} = context();
   
-  // clearErrors when unmounting the component
-  return props.actions().entries.clearErrors;
+  if (Meteor.subscribe('projects').ready()) {
+    const projects = Collections.Projects.find().fetch();
+    onData(null, {projects});
+  }
 };
+
+export const depsMapper = (context, actions) => ({
+  saveEntry: actions.entries.insert,
+  navigateEngineering: actions.entries.navigateEngineering,
+  clearErrors: actions.entries.clearErrors,
+  context: () => context,
+});
 
 export default composeAll(
   composeWithTracker(composer),
-  useDeps()
+  useDeps(depsMapper)
 )(Edit);

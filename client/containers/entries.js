@@ -3,7 +3,7 @@ import {useDeps} from 'react-simple-di';
 import {composeWithTracker, composeAll} from 'react-komposer';
 
 export const composer = ({context}, onData) => {
-  const {Meteor, Collections} = context;
+  const {Meteor, Collections} = context();
   
   if (Meteor.subscribe('entries').ready()) {
     const entries = Collections.Entries.find().fetch();
@@ -13,7 +13,7 @@ export const composer = ({context}, onData) => {
 
 export const depsMapper = (context, actions) => ({
   navigateNewEntry: actions.entries.navigateNewEntry,
-  context: context
+  context: () => context
 });
 
 export default composeAll(

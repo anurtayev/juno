@@ -6,10 +6,10 @@ class ProjectInput extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = this.getInitialState();
+    this.state = this.getInitialStateValues();
   }
   
-  getInitialState() {
+  getInitialStateValues() {
     return {
       selectedProject: null,
       textFieldValue: '',
@@ -20,7 +20,7 @@ class ProjectInput extends React.Component {
   }
   
   onFocus() {
-    this.setState(this.getInitialState());
+    this.setState(this.getInitialStateValues());
     this.props.selectedProjectOnChange(this.state.selectedProject);
   }
   
@@ -68,7 +68,7 @@ class ProjectInput extends React.Component {
   render() {
     return (
       <div>
-        <TextField hintText="Project" value={this.state.textFieldValue} onChange={this.onChange} onFocus={this.onFocus} onBlur={this.onBlur}/>
+        <TextField hintText="Project" value={this.state.textFieldValue} onChange={this.onChange} onFocus={this.onFocus} onBlur={this.onBlur} underlineStyle={underlineStyle} style={style}/>
         {this.state.focus ? <ProjectsTable projects={this.state.filteredProjects} selectedProjectOnChange={this.selectedProjectOnChange} looseFocus={this.looseFocus} onMouseInsideTable={this.onMouseInsideTable} onMouseOutsideTable={this.onMouseOutsideTable}/> : null}
       </div>
     );
@@ -79,5 +79,7 @@ ProjectInput.propTypes = {
   projects: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired,
   selectedProjectOnChange: React.PropTypes.func.isRequired
 };
+
+ProjectInput.displayName = 'TextField';
 
 export default ProjectInput;

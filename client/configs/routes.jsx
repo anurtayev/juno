@@ -43,7 +43,7 @@ export const initRoutes = (context, actions) => {
     name: 'edit',
     action({entryId}) {
       mount(MainLayoutCtx, {
-        content: () => (<Edit entryId={entryId}/>)
+        content: () => (<Edit entry={entry}/>)
       });
     }
   });
