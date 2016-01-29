@@ -7,12 +7,14 @@ import Divider from 'material-ui/lib/divider';
 import Paper from 'material-ui/lib/paper';
 import TextField from 'material-ui/lib/text-field';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
-import ProjectInput from '../project-input/index.jsx';
+import ProjectInput from '../../containers/projectInput';
+import TaskInput from '../taskInput/index.jsx';
 
 export default class Edit extends React.Component {
   
   constructor(props) {
     super(props);
+    
     this.state = {
       _id: props.entry ? props.entry._id : null,
       date: props.entry ? props.entry.date : null,
@@ -24,8 +26,10 @@ export default class Edit extends React.Component {
       submited: props.entry ? props.entry.submited : false,
       invoiced: props.entry ? props.entry.invoiced : false,
       createdAt: props.entry ? props.entry.createdAt : new Date(),
-      userId: props.entry ? props.entry.userId : this.props.context().Meteor.userId(),
-      username: props.entry ? props.entry.username : this.props.context().Meteor.user().username,
+      userId: props.entry ? props.entry.userId : this.props.userId,
+      username: props.entry ? props.entry.username : this.props.username,
+      
+      _edt_tasks: []
     };
   }
   
@@ -70,13 +74,13 @@ export default class Edit extends React.Component {
         <Paper zDepth={2}>
           <DatePicker ref='dateRef' hintText="Date" autoOk={true} value={this.state.date} onChange={this.dateOnChange.bind(this)} container="inline" style={style} underlineStyle={underlineStyle}/>
           <Divider />
-          <ProjectInput projects={this.props.projects} underlineStyle={underlineStyle} style={style} projectOnChange={this.projectOnChange.bind(this)}/>
+          <ProjectInput underlineStyle={underlineStyle} style={style} projectOnChange={this.projectOnChange.bind(this)}/>
           <Divider />
-          <TextField hintText="Task" underlineStyle={underlineStyle} style={style}/>
+          <TaskInput tasks={this.state._edt_tasks} underlineStyle={underlineStyle} style={style} taskOnChange={this.taskOnChange.bind(this)}/>
           <Divider />
           <TextField ref='hoursRef' hintText="Hours" underlineStyle={underlineStyle} style={style} onChange={this.hoursOnChange.bind(this)}/>
           <Divider />
-          <TextField ref='descriptionRef' hintText="Description" underlineStyle={underlineStyle} style={style} onChange={this.descriptionOnChange.bind(this)}/>
+          <TextField ref='descriptionRef' hintText="Description" underlineStyle={underlineStyle} style={style} onChange={this.descriptionOnChange.bind(this)} fullWidth/>
           <Divider />
         </Paper>
       </div>
@@ -85,8 +89,15 @@ export default class Edit extends React.Component {
   
   projectOnChange(event, project) {
     this.setState({
-      projectCode: project.projectCode,
-      projectTitle: project.projectTitle,
+      projectCode: project ? project.projectCode : '',
+      projectTitle: project ? project.projectTitle : '',
+      _edt_tasks: project ? project.tasks : []
+    });
+  }
+  
+  taskOnChange(event, task) {
+    this.setState({
+      projectTask: task
     });
   }
   
@@ -105,7 +116,8 @@ export default class Edit extends React.Component {
 
 Edit.propTypes = {
   entry: React.PropTypes.object,
-  projects: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired,
   saveEntry: React.PropTypes.func.isRequired,
   navigateEngineering: React.PropTypes.func.isRequired,
+  userId: React.PropTypes.string.isRequired,
+  username: React.PropTypes.string.isRequired
 };

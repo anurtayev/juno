@@ -2,13 +2,18 @@ import Edit from '../components/edit/index.jsx';
 import {useDeps} from 'react-simple-di';
 import {composeWithTracker, composeAll} from 'react-komposer';
 
-export const composer = ({context}, onData) => {
-  const {Meteor, Collections} = context();
+export const composer = ({context, clearErrors}, onData) => {
+  const {LocalState, Meteor} = context();
   
-  if (Meteor.subscribe('projects').ready()) {
-    const projects = Collections.Projects.find().fetch();
-    onData(null, {projects});
+  const error = LocalState.get('SAVING_ERROR');
+  if (Meteor.userId() && Meteor.user()) {
+    const userId = Meteor.userId();
+    const username = Meteor.user().username;
+    onData(null, {error, userId, username});
   }
+
+  // clearErrors when unmounting the component
+  return clearErrors;
 };
 
 export const depsMapper = (context, actions) => ({

@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectsTable from './projectsTable.jsx';
 import TextField from 'material-ui/lib/text-field';
 
-export default class ProjectInput extends React.Component {
+export default class TaskInput extends React.Component {
   
   constructor(props) {
     super(props);
@@ -30,7 +30,7 @@ export default class ProjectInput extends React.Component {
     if ( !this.state.mouseInsideTable ) this.looseFocus();
   }
   
-  projectOnChange(selectedProject) {
+  taskOnChange(selectedProject) {
     this.setState({
       selectedProject: selectedProject,
       textFieldValue: `${selectedProject.code} ${selectedProject.title} ${selectedProject.location}`
@@ -71,16 +71,28 @@ export default class ProjectInput extends React.Component {
     
     return (
       <div>
-        <TextField hintText="Project" value={this.state.textFieldValue} onChange={this.onChange.bind(this)} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} underlineStyle={this.props.underlineStyle} style={this.props.style} fullWidth/>
-        {this.state.showTable ? <ProjectsTable projects={filteredProjects} projectOnChange={this.projectOnChange.bind(this)} onMouseInsideTable={this.onMouseInsideTable.bind(this)} onMouseOutsideTable={this.onMouseOutsideTable.bind(this)}/> : null}
+      
+        <TextField 
+          hintText={this.props.tasks.length ? 'Task': 'Select project first'} 
+          value={this.state.textFieldValue} 
+          onChange={this.onChange.bind(this)} 
+          onFocus={this.onFocus.bind(this)} 
+          onBlur={this.onBlur.bind(this)} 
+          underlineStyle={this.props.underlineStyle} 
+          style={this.props.style} 
+          fullWidth
+        />
+        
+        {this.state.showTable ? <ProjectsTable projects={filteredProjects} projectOnChange={this.taskOnChange.bind(this)} onMouseInsideTable={this.onMouseInsideTable.bind(this)} onMouseOutsideTable={this.onMouseOutsideTable.bind(this)}/> : null}
+        
       </div>
     );
   }
 }
 
-ProjectInput.propTypes = {
-  projects: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired,
-  projectOnChange: React.PropTypes.func.isRequired,
+TaskInput.propTypes = {
+  tasks: React.PropTypes.arrayOf( React.PropTypes.string ).isRequired,
+  taskOnChange: React.PropTypes.func.isRequired,
   underlineStyle: React.PropTypes.object.isRequired,
   style: React.PropTypes.object.isRequired
 };
