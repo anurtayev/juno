@@ -25,8 +25,6 @@ export default class ProjectInput extends React.Component {
   }
   
   onBlur() {
-    console.log('onBlur');
-    console.log(`mouseInsideTable: ${this.state.mouseInsideTable}`);
     if ( !this.state.mouseInsideTable ) this.looseFocus();
   }
   
@@ -35,12 +33,11 @@ export default class ProjectInput extends React.Component {
       selectedProject: selectedProject,
       textFieldValue: `${selectedProject.code} ${selectedProject.title} ${selectedProject.location}`
     });
-    this.props.projectOnChange(this.state.selectedProject);
+    this.props.projectOnChange(selectedProject);
     this.looseFocus();
   }
   
   looseFocus() {
-    console.log('looseFocus');
     if ( this.state.mouseInsideTable ) this.setState({ mouseInsideTable: false });
     this.setState({ showTable: false });
   }

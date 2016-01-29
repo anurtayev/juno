@@ -87,7 +87,7 @@ export default class Edit extends React.Component {
     )
   }
   
-  projectOnChange(event, project) {
+  projectOnChange(project) {
     this.setState({
       projectCode: project ? project.projectCode : '',
       projectTitle: project ? project.projectTitle : '',
@@ -95,7 +95,7 @@ export default class Edit extends React.Component {
     });
   }
   
-  taskOnChange(event, task) {
+  taskOnChange(task) {
     this.setState({
       projectTask: task
     });

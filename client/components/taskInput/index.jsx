@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectsTable from './projectsTable.jsx';
+import TaskTable from './taskTable.jsx';
 import TextField from 'material-ui/lib/text-field';
 
 export default class TaskInput extends React.Component {
@@ -7,7 +7,7 @@ export default class TaskInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedProject: null,
+      selectedTask: null,
       textFieldValue: '',
       mouseInsideTable: false,
       showTable: false
@@ -16,31 +16,28 @@ export default class TaskInput extends React.Component {
   
   onFocus() {
     this.setState({
-      selectedProject: null,
+      selectedTask: null,
       textFieldValue: '',
       mouseInsideTable: false,
       showTable: true
     });
-    this.props.projectOnChange(this.state.selectedProject);
+    this.props.taskOnChange(this.state.selectedTask);
   }
   
   onBlur() {
-    console.log('onBlur');
-    console.log(`mouseInsideTable: ${this.state.mouseInsideTable}`);
     if ( !this.state.mouseInsideTable ) this.looseFocus();
   }
   
-  taskOnChange(selectedProject) {
+  taskOnChange(selectedTask) {
     this.setState({
-      selectedProject: selectedProject,
-      textFieldValue: `${selectedProject.code} ${selectedProject.title} ${selectedProject.location}`
+      selectedTask: selectedTask,
+      textFieldValue: selectedTask
     });
-    this.props.projectOnChange(this.state.selectedProject);
+    this.props.taskOnChange(this.state.selectedTask);
     this.looseFocus();
   }
   
   looseFocus() {
-    console.log('looseFocus');
     if ( this.state.mouseInsideTable ) this.setState({ mouseInsideTable: false });
     this.setState({ showTable: false });
   }
@@ -58,22 +55,21 @@ export default class TaskInput extends React.Component {
   }
   
   render() {
-    let filteredProjects;
+    let filteredTable;
     if (this.state.textFieldValue) {
-      filteredProjects = [];
-      this.props.projects.forEach( project => {
-        const searchStr = project.code + project.title + project.location;
-        if ( searchStr.indexOf( this.state.textFieldValue ) > -1 ) filteredProjects.push( project );
+      filteredTable = [];
+      this.props.tasks.forEach( task => {
+        if ( task.indexOf( this.state.textFieldValue ) > -1 ) filteredTable.push( task );
       })
     } else {
-      filteredProjects = this.props.projects;
+      filteredTable = this.props.tasks;
     }
     
     return (
       <div>
       
         <TextField 
-          hintText={this.props.tasks.length ? 'Task': 'Select project first'} 
+          hintText={this.props.tasks.length ? 'Task': 'Taks. Select project first...'} 
           value={this.state.textFieldValue} 
           onChange={this.onChange.bind(this)} 
           onFocus={this.onFocus.bind(this)} 
@@ -83,7 +79,14 @@ export default class TaskInput extends React.Component {
           fullWidth
         />
         
-        {this.state.showTable ? <ProjectsTable projects={filteredProjects} projectOnChange={this.taskOnChange.bind(this)} onMouseInsideTable={this.onMouseInsideTable.bind(this)} onMouseOutsideTable={this.onMouseOutsideTable.bind(this)}/> : null}
+        {this.state.showTable ? 
+          <TaskTable 
+            tasks={filteredTable} 
+            taskOnChange={this.taskOnChange.bind(this)} 
+            onMouseInsideTable={this.onMouseInsideTable.bind(this)} 
+            onMouseOutsideTable={this.onMouseOutsideTable.bind(this)}
+          />
+        : null}
         
       </div>
     );
