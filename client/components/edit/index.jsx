@@ -19,8 +19,8 @@ export default class Edit extends React.Component {
       _id: props.entry ? props.entry._id : null,
       date: props.entry ? props.entry.date : null,
       projectCode: props.entry ? props.entry.projectCode : '',
-      projectName: props.entry ? props.entry.projectName : '',
-      projecTask: props.entry ? props.entry.projecTask : '',
+      projectTitle: props.entry ? props.entry.projectTitle : '',
+      projectTask: props.entry ? props.entry.projectTask : '',
       hours: props.entry ? props.entry.hours : '',
       description: props.entry ? props.entry.description : '',
       submited: props.entry ? props.entry.submited : false,
@@ -43,6 +43,8 @@ export default class Edit extends React.Component {
     const style = {
       marginLeft: 20,
     };
+    
+    console.log(this.state);
 
     return (
       <div>
@@ -57,7 +59,7 @@ export default class Edit extends React.Component {
                 date: this.state.date,
                 projectCode: this.state.projectCode,
                 projectTitle: this.state.projectTitle,
-                projecTask: this.state.projecTask,
+                projectTask: this.state.projectTask,
                 hours: this.state.hours,
                 description: this.state.description,
                 submited: this.state.submited,
@@ -78,7 +80,7 @@ export default class Edit extends React.Component {
           <Divider />
           <TaskInput tasks={this.state._edt_tasks} underlineStyle={underlineStyle} style={style} taskOnChange={this.taskOnChange.bind(this)}/>
           <Divider />
-          <TextField ref='hoursRef' hintText="Hours" underlineStyle={underlineStyle} style={style} onChange={this.hoursOnChange.bind(this)}/>
+          <TextField ref='hoursRef' hintText="Hours" underlineStyle={underlineStyle} style={style} onChange={this.hoursOnChange.bind(this)} value={this.state.hours}/>
           <Divider />
           <TextField ref='descriptionRef' hintText="Description" underlineStyle={underlineStyle} style={style} onChange={this.descriptionOnChange.bind(this)} fullWidth/>
           <Divider />
@@ -88,29 +90,31 @@ export default class Edit extends React.Component {
   }
   
   projectOnChange(project) {
+    console.log(`projectOnChange typeOf: ${typeof project}`);
+    console.log(`projectOnChange in: ${project ? project.title : 'falsy'}`);
     this.setState({
-      projectCode: project ? project.projectCode : '',
-      projectTitle: project ? project.projectTitle : '',
+      projectCode: project ? project.code : '',
+      projectTitle: project ? project.title : '',
       _edt_tasks: project ? project.tasks : []
     });
   }
   
   taskOnChange(task) {
-    this.setState({
-      projectTask: task
-    });
+    console.log(`taskOnChange typeOf: ${typeof task}`);
+    console.log(`taskOnChange in: ${task}`);
+    this.setState({projectTask: task});
   }
   
   dateOnChange(event, date) {
     this.setState({date: date});
   }
   
-  hoursOnChange(event, hours) {
-    this.setState({hours: hours});
+  hoursOnChange(event) {
+    this.setState({hours: event.target.value});
   }
   
-  descriptionOnChange(event, description) {
-    this.setState({description: description});
+  descriptionOnChange(event) {
+    this.setState({description: event.target.value});
   }
 }
 

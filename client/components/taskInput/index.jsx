@@ -33,7 +33,7 @@ export default class TaskInput extends React.Component {
       selectedTask: selectedTask,
       textFieldValue: selectedTask
     });
-    this.props.taskOnChange(this.state.selectedTask);
+    this.props.taskOnChange(selectedTask);
     this.looseFocus();
   }
   

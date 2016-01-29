@@ -17,7 +17,7 @@ export default {
       console.log('INSERT: SAVING_ERROR null');
       LocalState.set('SAVING_ERROR', null);
 
-      entry.id = Meteor.uuid();
+      entry._id = Meteor.uuid();
       Meteor.call('entries.insert', entry, (err) => {
         if (err) {
           console.log('INSERT: saving err');
