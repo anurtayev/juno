@@ -4,19 +4,23 @@ import EntriesActions from './entriesActions.jsx';
 import AppBar from 'material-ui/lib/app-bar';
 import {useDeps} from 'react-simple-di';
 
-export default Entries = ({mode, entries, actions}) => {
-
-  return (
-    <div>
-      <AppBar
-        title={<span>Timesheet entries</span>}
-        iconElementRight={<EntriesActions navigateNewEntry={actions().entries.navigateNewEntry} submit={actions().entries.submit}/>}
+export default Entries = ({mode, entries, actions}) => (
+  <div>
+    <AppBar
+      title={<span>Timesheet entries</span>}
+      iconElementRight={<EntriesActions navigateNewEntry={actions().entries.navigateNewEntry} submit={actions().entries.submit}/>}
+    />
+    
+    {entries.length === 0 ? null : 
+      <EntriesTable 
+        entries={entries}
+        deleteEntry={actions().entries.deleteEntry}
+        copyEntry={actions().entries.copyEntry}
+        editEntry={actions().entries.editEntry}
       />
-      
-      {entries.length === 0 ? null : <EntriesTable entries={entries}/>}
-    </div>
-  );
-}
+    }
+  </div>
+);
 
 Entries.propTypes = { 
   mode: React.PropTypes.string.isRequired,

@@ -7,7 +7,7 @@ import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 
-export default EntriesTable = ({entries}) => (
+export default EntriesTable = ({entries, deleteEntry, copyEntry, editEntry}) => (
   <Table selectable={false}>
     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
     
@@ -32,9 +32,9 @@ export default EntriesTable = ({entries}) => (
             <TableRowColumn style={{width: '2rem'}}>&#x2713;</TableRowColumn>
           :           
             <TableRowColumn style={{width: '2rem'}}>
-              <button onClick={this.deleteEntry}>&times;</button>
-              <button onClick={this.copyEntry}>&#x2398;</button>
-              <button onClick={this.copyEntry}>&#x270D;</button>
+              <button onClick={deleteEntry.bind(this, entry._id)}>&times;</button>
+              <button onClick={copyEntry.bind(this, entry._id)}>&#x2398;</button>
+              <button onClick={editEntry.bind(this, entry._id)}>&#x270D;</button>
             </TableRowColumn>
           }
           
@@ -55,5 +55,8 @@ export default EntriesTable = ({entries}) => (
 );
 
 EntriesTable.propTypes = { 
-  entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired
+  entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired,
+  deleteEntry: React.PropTypes.func.isRequired,
+  copyEntry: React.PropTypes.func.isRequired,
+  editEntry: React.PropTypes.func.isRequired
 };

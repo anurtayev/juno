@@ -37,7 +37,7 @@ export default {
     FlowRouter.go(`/invoicing`);
   },
   
-  submit({Meteor, LocalState, FlowRouter, Collections}) {
+  submit({Meteor, FlowRouter}) {
     Meteor.call('entries.submit');
     FlowRouter.go(`/engineering`);
   },
@@ -48,5 +48,24 @@ export default {
   
   navigateEngineering({FlowRouter}) {
     FlowRouter.go('/engineering');
+  },
+  
+  deleteEntry({Meteor}, entryId) {
+    Meteor.call('entries.delete', entryId);
+  },
+  
+  editEntry({Meteor}) {
+    Meteor.call('entries.delete');
+  },
+  
+  copyEntry({Meteor, Collections, LocalState, FlowRouter}, entryId) {
+    const entry = Collections.Entries.findOne({ _id: entryId });
+    entry._id = Meteor.uuid();
+    entry.createdAt = new Date();
+    Meteor.call('entries.insert', entry, (err) => {
+      if (err) {
+        return LocalState.set('SAVING_ERROR', err.message);
+      }
+    });
   }
 };
