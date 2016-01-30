@@ -3,7 +3,7 @@ import {Meteor} from 'meteor/meteor';
 
 export default function () {
   Meteor.publish('entries', function () {
-    return Entries.find({});
+    return Entries.find({}, {sort: {createdAt: -1}});
   });
 
   Meteor.publish('entries.accounting', function () {

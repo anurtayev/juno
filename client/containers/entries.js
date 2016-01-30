@@ -11,12 +11,7 @@ export const composer = ({context}, onData) => {
   }
 };
 
-export const depsMapper = (context, actions) => ({
-  navigateNewEntry: actions.entries.navigateNewEntry,
-  context: () => context
-});
-
 export default composeAll(
   composeWithTracker(composer),
-  useDeps(depsMapper)
+  useDeps()
 )(Entries);

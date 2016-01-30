@@ -10,7 +10,7 @@ export default function () {
     },
     
     'entries.submit'() {
-      Entries.update({ userId: Meteor.userId(), submited: false }, { $set: { submited: true } }, { multi: true });
+      Entries.update({ userId: Meteor.userId(), submitted: false }, { $set: { submitted: true } }, { multi: true });
     },
 
     'entries.invoice'() {

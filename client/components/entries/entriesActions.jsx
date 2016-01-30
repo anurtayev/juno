@@ -1,18 +1,18 @@
 import FlatButton from 'material-ui/lib/flat-button';
 import AccountsUI from '../accounts-ui/index.jsx';
+import React from 'react';
 
-const EntriesActions = (props) => (
+export default EntriesActions = ({navigateNewEntry, submit, style}) => (
   <div>
     <AccountsUI/>
-    <FlatButton label="New" onTouchTap={props.navigateNewEntry} style={props.style} />
-    <FlatButton label="Submit" style={props.style} />
+    <FlatButton label="New" onTouchTap={navigateNewEntry} style={style} />
+    <FlatButton label="Submit" onTouchTap={submit} style={style} />
   </div>
 );
 
-EntriesActions.propTypes = { 
-  navigateNewEntry: React.PropTypes.func.isRequired
-};
-
 EntriesActions.displayName = 'FlatButton';
 
-export default EntriesActions;
+EntriesActions.propTypes = {
+  navigateNewEntry: React.PropTypes.func.isRequired,
+  submit: React.PropTypes.func.isRequired
+};

@@ -37,6 +37,11 @@ export default {
     FlowRouter.go(`/invoicing`);
   },
   
+  submit({Meteor, LocalState, FlowRouter, Collections}) {
+    Meteor.call('entries.submit');
+    FlowRouter.go(`/engineering`);
+  },
+  
   navigateNewEntry({FlowRouter}) {
     FlowRouter.go('/newentry');
   },
