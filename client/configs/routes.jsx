@@ -4,7 +4,7 @@ import {FlowRouter} from 'meteor/kadira:flow-router';
 import {mount} from 'react-mounter';
 
 import MainLayout from '../containers/layout';
-import Entries from '../containers/entries';
+import EngineeringEntries from '../containers/engineeringEntries';
 import Edit from '../containers/edit';
 import Dashboard from '../components/dashboard/index.jsx';
 
@@ -25,7 +25,7 @@ export const initRoutes = (context, actions) => {
     name: 'engineering',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<Entries mode='engineering'/>)
+        content: () => (<EngineeringEntries/>)
       });
     }
   });
