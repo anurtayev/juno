@@ -50,15 +50,14 @@ export default class MainLayout extends React.Component {
 
   route() {
     const route = FlowRouter.getRouteName();
-    console.log(`inp route: ${route}`);
     const username = this.props.username;
-    console.log(`inp username: ${username}`);
+    console.log(`inp route: <${route}>, inp username: <${username}>`);
     
     if ( !username ) {
       if ( route !== 'dashboard') {
         FlowRouter.go('/');
       }
-      console.log('to dashboad...');
+      console.log('anonymous, to dashboad...');
       return;
     }
     
@@ -80,7 +79,7 @@ export default class MainLayout extends React.Component {
           dep = k;
         }
       }
-      console.log(`fallback to default entry point: ${dep}`);
+      console.log(`fallback to default entry point: <${dep}>`);
       FlowRouter.go(`/${dep}`);
       return;
     }

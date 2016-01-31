@@ -24,7 +24,8 @@ export default function () {
     },
 
     'entries.invoice'() {
-      Entries.update({ invoiced: false, submited: true }, { $set: { invoiced: true } }, { multi: true });
+      console.log('entries.invoice');
+      Entries.update({ invoiced: false, submitted: true }, { $set: { invoiced: true } }, { multi: true });
     },
     
     'entries.delete'( entryId ) {

@@ -7,22 +7,16 @@ import {useDeps} from 'react-simple-di';
 export default Entries = ({entries, actions}) => (
   <div>
     <AppBar
-      title={<span>Timesheet entries</span>}
-      iconElementRight={<EntriesActions navigateNewEntry={actions().entries.navigateNewEntry} submit={actions().entries.submit}/>}
+      title={<span>Invoicing</span>}
+      iconElementRight={<EntriesActions doInvoice={actions().invoicing.doInvoice}/>}
     />
     
     {entries.length === 0 ? null : 
-      <EntriesTable 
-        entries={entries}
-        deleteEntry={actions().entries.deleteEntry}
-        copyEntry={actions().entries.copyEntry}
-        editEntry={actions().entries.editEntry}
-      />
+      <EntriesTable entries={entries}/>
     }
   </div>
 );
 
 Entries.propTypes = { 
-  // mode: React.PropTypes.string.isRequired,
   entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired
 };

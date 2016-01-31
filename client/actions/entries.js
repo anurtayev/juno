@@ -1,6 +1,3 @@
-import Papa from 'meteor/harrison:papa-parse';
-import saveAs from 'meteor/pfafman:filesaver';
-
 export default {
   insert({Meteor, LocalState, FlowRouter}, entry) {
     

@@ -5,6 +5,7 @@ import {mount} from 'react-mounter';
 
 import MainLayout from '../containers/layout';
 import EngineeringEntries from '../containers/engineeringEntries';
+import AccountingEntries from '../containers/accountingEntries';
 import Edit from '../containers/edit';
 import Dashboard from '../components/dashboard/index.jsx';
 
@@ -34,7 +35,7 @@ export const initRoutes = (context, actions) => {
     name: 'accounting',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<Entries mode='accounting'/>)
+        content: () => (<AccountingEntries/>)
       });
     }
   });

@@ -18,10 +18,7 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 accounts-ui
 accounts-password
-reactrouter:react-router
 twbs:bootstrap
-pfafman:filesaver
-harrison:papa-parse
 react
 kadira:flow-router
 reactive-dict

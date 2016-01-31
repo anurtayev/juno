@@ -7,7 +7,7 @@ import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 
-export default EntriesTable = ({entries, deleteEntry, copyEntry, editEntry}) => (
+export default EntriesTable = ({entries}) => (
   <Table selectable={false}>
     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
     
@@ -15,10 +15,10 @@ export default EntriesTable = ({entries, deleteEntry, copyEntry, editEntry}) => 
         <TableHeaderColumn style={{width: '2rem'}}>&#8230;</TableHeaderColumn>
         <TableHeaderColumn style={{width: '1rem'}}>Date</TableHeaderColumn>
         <TableHeaderColumn style={{width: '2rem'}}>Code</TableHeaderColumn>
-        <TableHeaderColumn style={{width: '8rem'}}>Title</TableHeaderColumn>
         <TableHeaderColumn style={{width: '8rem'}}>Task</TableHeaderColumn>
         <TableHeaderColumn style={{width: '1rem'}}>Hours</TableHeaderColumn>
         <TableHeaderColumn style={{width: '5rem'}}>Description</TableHeaderColumn>
+        <TableHeaderColumn style={{width: '2rem'}}>User</TableHeaderColumn>
       </TableRow>
       
     </TableHeader >
@@ -27,22 +27,14 @@ export default EntriesTable = ({entries, deleteEntry, copyEntry, editEntry}) => 
       {entries.map( (entry) => (
         
         <TableRow  key={entry._id}>
-          {entry.submitted ?
-            <TableRowColumn style={{width: '2rem'}}>&#x2713;</TableRowColumn>
-          :           
-            <TableRowColumn style={{width: '2rem'}}>
-              <button onClick={deleteEntry.bind(this, entry._id)}>&times;</button>
-              <button onClick={copyEntry.bind(this, entry._id)}>&#x2398;</button>
-              <button onClick={editEntry.bind(this, entry._id)}>&#x270D;</button>
-            </TableRowColumn>
-          }
           
+          <TableRowColumn style={{width: '2rem'}}>{entry.invoiced ? '\u2713' : ''}</TableRowColumn>
           <TableRowColumn style={{width: '1rem'}}>{moment(entry.date).format('D-MM-YY')}</TableRowColumn>
           <TableRowColumn style={{width: '2rem'}}>{entry.projectCode}</TableRowColumn>
-          <TableRowColumn style={{width: '8rem'}}>{entry.projectTitle}</TableRowColumn>
           <TableRowColumn style={{width: '8rem'}}>{entry.projectTask}</TableRowColumn>
           <TableRowColumn style={{width: '1rem'}}>{entry.hours}</TableRowColumn>
           <TableRowColumn style={{width: '5rem'}}>{entry.description}</TableRowColumn>
+          <TableRowColumn style={{width: '2rem'}}>{entry.username}</TableRowColumn>
 
         </TableRow>
         
@@ -53,8 +45,5 @@ export default EntriesTable = ({entries, deleteEntry, copyEntry, editEntry}) => 
 );
 
 EntriesTable.propTypes = { 
-  entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired,
-  deleteEntry: React.PropTypes.func.isRequired,
-  copyEntry: React.PropTypes.func.isRequired,
-  editEntry: React.PropTypes.func.isRequired
+  entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired
 };

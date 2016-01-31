@@ -7,6 +7,6 @@ export default function () {
   });
 
   Meteor.publish('entries.accounting', function () {
-    return Entries.find({ invoiced: false, submited: true });
+    return Entries.find({ submitted: true });
   });
 }
