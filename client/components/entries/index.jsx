@@ -23,6 +23,6 @@ export default Entries = ({mode, entries, actions}) => (
 );
 
 Entries.propTypes = { 
-  mode: React.PropTypes.string.isRequired,
+  // mode: React.PropTypes.string.isRequired,
   entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired
 };

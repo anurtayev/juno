@@ -5,8 +5,18 @@ import {check} from 'meteor/check';
 export default function () {
   Meteor.methods({
     'entries.insert' ( entry ) {
-      console.log('entries.insert');
       Entries.insert(entry);
+    },
+    
+    'entries.update' ( entry ) {
+      Entries.update({ _id: entry._id }, { $set: { 
+        date: entry.date,
+        // projectCode: entry.projectCode,
+        // projectTitle: entry.projectTitle,
+        // projectTask: entry.projectTask,
+        hours: entry.hours,
+        description: entry.description
+      } });
     },
     
     'entries.submit'() {

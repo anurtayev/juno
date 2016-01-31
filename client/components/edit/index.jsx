@@ -80,9 +80,9 @@ export default class Edit extends React.Component {
           <Divider />
           <TaskInput tasks={this.state._edt_tasks} underlineStyle={underlineStyle} style={style} taskOnChange={this.taskOnChange.bind(this)}/>
           <Divider />
-          <TextField ref='hoursRef' hintText="Hours" underlineStyle={underlineStyle} style={style} onChange={this.hoursOnChange.bind(this)} value={this.state.hours}/>
+          <TextField hintText="Hours" underlineStyle={underlineStyle} style={style} onChange={this.hoursOnChange.bind(this)} value={this.state.hours}/>
           <Divider />
-          <TextField ref='descriptionRef' hintText="Description" underlineStyle={underlineStyle} style={style} onChange={this.descriptionOnChange.bind(this)} fullWidth/>
+          <TextField hintText="Description" underlineStyle={underlineStyle} style={style} onChange={this.descriptionOnChange.bind(this)} fullWidth value={this.state.description}/>
           <Divider />
         </Paper>
       </div>

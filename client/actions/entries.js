@@ -10,11 +10,18 @@ export default {
         !entry.projectTitle ||
         !entry.projectTask ||
         !entry.hours 
-    ) {
-      return LocalState.set('SAVING_ERROR', 'required values are missing...');
-    } else {
-      LocalState.set('SAVING_ERROR', null);
+    ) return LocalState.set('SAVING_ERROR', 'required values are missing...');
 
+    if (entry._id) {
+      // update
+      Meteor.call('entries.update', entry, (err) => {
+        if (err) {
+          return LocalState.set('SAVING_ERROR', err.message);
+        } else {
+          FlowRouter.go(`/engineering`);
+        }
+      });
+    } else {
       entry._id = Meteor.uuid();
       Meteor.call('entries.insert', entry, (err) => {
         if (err) {
@@ -28,13 +35,6 @@ export default {
 
   clearErrors({LocalState}) {
     return LocalState.set('SAVING_ERROR', null);
-  },
-  
-  invoice({Meteor, LocalState, FlowRouter, Collections}) {
-    let csvString = Papa.unparse(Collections.Entries.find({}).fetch(), { newline: "\r\n" });
-    saveAs(new Blob([csvString], { type: "text/plain;charset=utf-8" }), 'export.csv');
-    Meteor.call('invoice');
-    FlowRouter.go(`/invoicing`);
   },
   
   submit({Meteor, FlowRouter}) {
@@ -51,11 +51,13 @@ export default {
   },
   
   deleteEntry({Meteor}, entryId) {
+    console.log(`deleteEntry action: ${entryId}`);
     Meteor.call('entries.delete', entryId);
   },
   
-  editEntry({Meteor}) {
-    Meteor.call('entries.delete');
+  editEntry({Meteor, FlowRouter}, entryId) {
+    console.log(`editEntry action: ${entryId}`);
+    FlowRouter.go(`/edit/${entryId}`);
   },
   
   copyEntry({Meteor, Collections, LocalState, FlowRouter}, entryId) {
