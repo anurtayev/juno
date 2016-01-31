@@ -7,7 +7,7 @@ import {useDeps} from 'react-simple-di';
 export default Entries = ({entries, actions}) => {
   
   const totalHours = entries.reduce( (previousValue, currentValue, currentIndex, array) => {
-    return previousValue + currentValue.hours;
+    return previousValue + (currentValue.submitted ? 0 : currentValue.hours);
   }, 0);
   
   return (
