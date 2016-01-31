@@ -21,7 +21,7 @@ export default class Edit extends React.Component {
       projectCode: props.entry ? props.entry.projectCode : '',
       projectTitle: props.entry ? props.entry.projectTitle : '',
       projectTask: props.entry ? props.entry.projectTask : '',
-      hours: props.entry ? props.entry.hours : '',
+      hours: props.entry ? props.entry.hours : 0,
       description: props.entry ? props.entry.description : '',
       submitted: props.entry ? props.entry.submitted : false,
       invoiced: props.entry ? props.entry.invoiced : false,
@@ -110,7 +110,7 @@ export default class Edit extends React.Component {
   }
   
   hoursOnChange(event) {
-    this.setState({hours: event.target.value});
+    this.setState({hours: parseInt(event.target.value)});
   }
   
   descriptionOnChange(event) {
