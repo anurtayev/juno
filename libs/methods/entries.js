@@ -11,8 +11,8 @@ export default function () {
     'entries.update' ( entry ) {
       Entries.update({ _id: entry._id }, { $set: { 
         date: entry.date,
-        projectCode: entry.projectCode,
-        projectTitle: entry.projectTitle,
+        projectNumber: entry.projectNumber,
+        projectName: entry.projectName,
         projectTask: entry.projectTask,
         hours: entry.hours,
         description: entry.description

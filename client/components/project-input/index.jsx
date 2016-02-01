@@ -8,7 +8,7 @@ export default class ProjectInput extends React.Component {
     super(props);
     this.state = {
       selectedProject: props.selectedProject,
-      textFieldValue: props.selectedProject ? `${props.selectedProject.code} ${props.selectedProject.title} ${props.selectedProject.location}` : '',
+      textFieldValue: props.selectedProject ? `${props.selectedProject.projectNumber} ${props.selectedProject.projectName} ${props.selectedProject.location}` : '',
       mouseInsideTable: false,
       showTable: false
     };
@@ -31,7 +31,7 @@ export default class ProjectInput extends React.Component {
   projectOnChange(selectedProject) {
     this.setState({
       selectedProject: selectedProject,
-      textFieldValue: `${selectedProject.code} ${selectedProject.title} ${selectedProject.location}`
+      textFieldValue: `${selectedProject.projectNumber} ${selectedProject.projectName} ${selectedProject.location}`
     });
     this.props.projectOnChange(selectedProject);
     this.looseFocus();
@@ -59,7 +59,7 @@ export default class ProjectInput extends React.Component {
     if (this.state.textFieldValue) {
       filteredProjects = [];
       this.props.projects.forEach( project => {
-        const searchStr = project.code + project.title + project.location;
+        const searchStr = project.projectNumber + project.projectName + project.location;
         if ( searchStr.indexOf( this.state.textFieldValue ) > -1 ) filteredProjects.push( project );
       })
     } else {

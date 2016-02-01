@@ -44,10 +44,10 @@ export default class TaskInput extends React.Component {
   
   render() {
     let filteredTable;
-    if (this.state.textFieldValue) {
+    if (this.props.value) {
       filteredTable = [];
       this.props.tasks.forEach( task => {
-        if ( task.indexOf( this.state.textFieldValue ) > -1 ) filteredTable.push( task );
+        if ( task.indexOf( this.props.value ) > -1 ) filteredTable.push( task );
       })
     } else {
       filteredTable = this.props.tasks;

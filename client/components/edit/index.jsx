@@ -26,7 +26,7 @@ export default class Edit extends React.Component {
       userId: props.entry ? props.entry.userId : this.props.userId,
       username: props.entry ? props.entry.username : this.props.username,
       
-      project: props.entry ? props.projects.find( (element, index, array) => { return props.entry.projectCode === element.code ? true : false } ) : null,
+      project: props.entry ? props.projects.find( (element, index, array) => { return props.entry.projectNumber === element.projectNumber ? true : false } ) : null,
       
       projectTask: props.entry ? props.entry.projectTask : '',
       taskInput_value: props.entry ? props.entry.projectTask : ''
@@ -55,8 +55,8 @@ export default class Edit extends React.Component {
               onTouchTap={this.props.saveEntry.bind(this, {
                 _id: this.state._id,
                 date: this.state.date,
-                projectCode: this.state.project ? this.state.project.code : '',
-                projectTitle: this.state.project ? this.state.project.title : '',
+                projectNumber: this.state.project ? this.state.project.projectNumber : '',
+                projectName: this.state.project ? this.state.project.projectName : '',
                 projectTask: this.state.projectTask,
                 hours: this.state.hours,
                 description: this.state.description,

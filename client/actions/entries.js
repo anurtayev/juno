@@ -3,8 +3,8 @@ export default {
     
     if (
         !entry.date || 
-        !entry.projectCode ||
-        !entry.projectTitle ||
+        !entry.projectNumber ||
+        !entry.projectName ||
         !entry.projectTask ||
         !entry.hours 
     ) return LocalState.set('SAVING_ERROR', 'required values are missing...');

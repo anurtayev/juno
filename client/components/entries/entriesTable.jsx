@@ -14,8 +14,8 @@ export default EntriesTable = ({entries, deleteEntry, copyEntry, editEntry}) => 
       <TableRow>
         <TableHeaderColumn style={{width: '2rem'}}>&#8230;</TableHeaderColumn>
         <TableHeaderColumn style={{width: '1rem'}}>Date</TableHeaderColumn>
-        <TableHeaderColumn style={{width: '2rem'}}>Code</TableHeaderColumn>
-        <TableHeaderColumn style={{width: '8rem'}}>Title</TableHeaderColumn>
+        <TableHeaderColumn style={{width: '2rem'}}>Project#</TableHeaderColumn>
+        <TableHeaderColumn style={{width: '8rem'}}>Project Name</TableHeaderColumn>
         <TableHeaderColumn style={{width: '8rem'}}>Task</TableHeaderColumn>
         <TableHeaderColumn style={{width: '1rem'}}>Hours</TableHeaderColumn>
         <TableHeaderColumn style={{width: '5rem'}}>Description</TableHeaderColumn>
@@ -38,8 +38,8 @@ export default EntriesTable = ({entries, deleteEntry, copyEntry, editEntry}) => 
           }
           
           <TableRowColumn style={{width: '1rem'}}>{moment(entry.date).format('D-MM-YY')}</TableRowColumn>
-          <TableRowColumn style={{width: '2rem'}}>{entry.projectCode}</TableRowColumn>
-          <TableRowColumn style={{width: '8rem'}}>{entry.projectTitle}</TableRowColumn>
+          <TableRowColumn style={{width: '2rem'}}>{entry.projectNumber}</TableRowColumn>
+          <TableRowColumn style={{width: '8rem'}}>{entry.projectName}</TableRowColumn>
           <TableRowColumn style={{width: '8rem'}}>{entry.projectTask}</TableRowColumn>
           <TableRowColumn style={{width: '1rem'}}>{entry.hours}</TableRowColumn>
           <TableRowColumn style={{width: '5rem'}}>{entry.description}</TableRowColumn>
