@@ -35,8 +35,10 @@ export default {
   },
   
   submit({Meteor, FlowRouter}) {
-    Meteor.call('entries.submit');
-    FlowRouter.go(`/engineering`);
+    if (confirm('This will SUBMIT entries for invoicing!')) {
+      Meteor.call('entries.submit');
+      FlowRouter.go(`/engineering`);
+    }
   },
   
   navigateNewEntry({FlowRouter}) {

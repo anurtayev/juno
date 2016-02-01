@@ -31,9 +31,9 @@ export default EntriesTable = ({entries, deleteEntry, copyEntry, editEntry}) => 
             <TableRowColumn style={{width: '2rem'}}>&#x2713;</TableRowColumn>
           :           
             <TableRowColumn style={{width: '2rem'}}>
-              <button onClick={deleteEntry.bind(this, entry._id)}>&times;</button>
-              <button onClick={copyEntry.bind(this, entry._id)}>&#x2398;</button>
-              <button onClick={editEntry.bind(this, entry._id)}>&#x270D;</button>
+              <button onClick={deleteEntry.bind(this, entry._id)} title='Delete'>&times;</button>
+              <button onClick={copyEntry.bind(this, entry._id)} title='Copy'>&#x2398;</button>
+              <button onClick={editEntry.bind(this, entry._id)} title='Edit'>&#x270D;</button>
             </TableRowColumn>
           }
           
