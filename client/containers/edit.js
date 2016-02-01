@@ -4,17 +4,16 @@ import {composeWithTracker, composeAll} from 'react-komposer';
 
 export const composer = ({context, clearErrors, entryId}, onData) => {
   
-  console.log(`inside: ${entryId}`);
-  
   const {LocalState, Meteor, Collections} = context();
   
   const error = LocalState.get('SAVING_ERROR');
-  if (Meteor.userId() && Meteor.user()) {
+  if (Meteor.userId() && Meteor.user() && Meteor.subscribe('projects').ready()) {
     
     const entry = entryId ? Collections.Entries.findOne({_id: entryId}) : null;
+    const projects = Collections.Projects.find().fetch();
     const userId = Meteor.userId();
     const username = Meteor.user().username;
-    onData(null, {error, userId, username, entry});
+    onData(null, {error, userId, username, entry, projects});
   }
 
   // clearErrors when unmounting the component

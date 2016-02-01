@@ -43,7 +43,6 @@ export const initRoutes = (context, actions) => {
   FlowRouter.route('/edit/:entryId', {
     name: 'edit',
     action({entryId}) {
-      console.log(`route was hit: ${entryId}`);
       mount(MainLayoutCtx, {
         content: () => (<Edit entryId={entryId}/>)
       });

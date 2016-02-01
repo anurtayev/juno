@@ -11,9 +11,9 @@ export default function () {
     'entries.update' ( entry ) {
       Entries.update({ _id: entry._id }, { $set: { 
         date: entry.date,
-        // projectCode: entry.projectCode,
-        // projectTitle: entry.projectTitle,
-        // projectTask: entry.projectTask,
+        projectCode: entry.projectCode,
+        projectTitle: entry.projectTitle,
+        projectTask: entry.projectTask,
         hours: entry.hours,
         description: entry.description
       } });
@@ -24,7 +24,6 @@ export default function () {
     },
 
     'entries.invoice'() {
-      console.log('entries.invoice');
       Entries.update({ invoiced: false, submitted: true }, { $set: { invoiced: true } }, { multi: true });
     },
     

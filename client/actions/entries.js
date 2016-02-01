@@ -48,12 +48,10 @@ export default {
   },
   
   deleteEntry({Meteor}, entryId) {
-    console.log(`deleteEntry action: ${entryId}`);
     Meteor.call('entries.delete', entryId);
   },
   
   editEntry({Meteor, FlowRouter}, entryId) {
-    console.log(`editEntry action: ${entryId}`);
     FlowRouter.go(`/edit/${entryId}`);
   },
   

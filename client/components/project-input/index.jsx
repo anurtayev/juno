@@ -7,8 +7,8 @@ export default class ProjectInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedProject: null,
-      textFieldValue: '',
+      selectedProject: props.selectedProject,
+      textFieldValue: props.selectedProject ? `${props.selectedProject.code} ${props.selectedProject.title} ${props.selectedProject.location}` : '',
       mouseInsideTable: false,
       showTable: false
     };
@@ -21,7 +21,7 @@ export default class ProjectInput extends React.Component {
       mouseInsideTable: false,
       showTable: true
     });
-    this.props.projectOnChange(this.state.selectedProject);
+    this.props.projectOnChange(null);
   }
   
   onBlur() {
@@ -79,5 +79,6 @@ ProjectInput.propTypes = {
   projects: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired,
   projectOnChange: React.PropTypes.func.isRequired,
   underlineStyle: React.PropTypes.object.isRequired,
-  style: React.PropTypes.object.isRequired
+  style: React.PropTypes.object.isRequired,
+  selectedProject: React.PropTypes.object
 };

@@ -7,8 +7,6 @@ export default class TaskInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTask: null,
-      textFieldValue: '',
       mouseInsideTable: false,
       showTable: false
     };
@@ -16,24 +14,18 @@ export default class TaskInput extends React.Component {
   
   onFocus() {
     this.setState({
-      selectedTask: null,
-      textFieldValue: '',
       mouseInsideTable: false,
       showTable: true
     });
-    this.props.taskOnChange(this.state.selectedTask);
+    this.props.taskOnChange(null);
   }
   
   onBlur() {
     if ( !this.state.mouseInsideTable ) this.looseFocus();
   }
   
-  taskOnChange(selectedTask) {
-    this.setState({
-      selectedTask: selectedTask,
-      textFieldValue: selectedTask
-    });
-    this.props.taskOnChange(selectedTask);
+  taskOnSelect(selectedTask) {
+    this.props.taskOnSelect(selectedTask);
     this.looseFocus();
   }
   
@@ -48,10 +40,6 @@ export default class TaskInput extends React.Component {
   
   onMouseOutsideTable() {
     this.setState({ mouseInsideTable: false });
-  }
-  
-  onChange(e) {
-    this.setState({ textFieldValue: e.target.value });
   }
   
   render() {
@@ -70,8 +58,8 @@ export default class TaskInput extends React.Component {
       
         <TextField 
           hintText={this.props.tasks.length ? 'Task': 'Taks. Select project first...'} 
-          value={this.state.textFieldValue} 
-          onChange={this.onChange.bind(this)} 
+          value={this.props.value} 
+          onChange={this.props.taskOnChange} 
           onFocus={this.onFocus.bind(this)} 
           onBlur={this.onBlur.bind(this)} 
           underlineStyle={this.props.underlineStyle} 
@@ -82,7 +70,7 @@ export default class TaskInput extends React.Component {
         {this.state.showTable ? 
           <TaskTable 
             tasks={filteredTable} 
-            taskOnChange={this.taskOnChange.bind(this)} 
+            taskOnSelect={this.taskOnSelect.bind(this)} 
             onMouseInsideTable={this.onMouseInsideTable.bind(this)} 
             onMouseOutsideTable={this.onMouseOutsideTable.bind(this)}
           />
@@ -96,6 +84,8 @@ export default class TaskInput extends React.Component {
 TaskInput.propTypes = {
   tasks: React.PropTypes.arrayOf( React.PropTypes.string ).isRequired,
   taskOnChange: React.PropTypes.func.isRequired,
+  taskOnSelect: React.PropTypes.func.isRequired, 
   underlineStyle: React.PropTypes.object.isRequired,
-  style: React.PropTypes.object.isRequired
+  style: React.PropTypes.object.isRequired,
+  selectedTask: React.PropTypes.string
 };

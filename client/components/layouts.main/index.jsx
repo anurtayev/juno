@@ -33,7 +33,6 @@ export default class MainLayout extends React.Component {
   
   getAuthorisedRoutes() {
     const rt = this.getRoutingTable();
-    console.log(rt);
     
     let match;
     for (let key in rt) {
@@ -43,21 +42,17 @@ export default class MainLayout extends React.Component {
     }
     
     match = !match ? '*' : match;
-    console.log(`match: ${match}`);
-    
     return rt[match];
   }
 
   route() {
     const route = FlowRouter.getRouteName();
     const username = this.props.username;
-    console.log(`inp route: <${route}>, inp username: <${username}>`);
     
     if ( !username ) {
       if ( route !== 'dashboard') {
         FlowRouter.go('/');
       }
-      console.log('anonymous, to dashboad...');
       return;
     }
     
@@ -69,7 +64,6 @@ export default class MainLayout extends React.Component {
         authorized = true;
       }
     }
-    console.log(`authorized: ${authorized}`);
     
     if (!authorized) {
       // find default entry point
@@ -79,7 +73,6 @@ export default class MainLayout extends React.Component {
           dep = k;
         }
       }
-      console.log(`fallback to default entry point: <${dep}>`);
       FlowRouter.go(`/${dep}`);
       return;
     }
