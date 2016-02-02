@@ -1,4 +1,4 @@
-import FlatButton from 'material-ui/lib/flat-button';
+import RaisedButton from 'material-ui/lib/raised-button';
 import AccountsUI from '../accounts-ui/index.jsx';
 import Toolbar from 'material-ui/lib/toolbar/toolbar';
 import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
@@ -11,14 +11,14 @@ export default EngineeringToolbar = ({navigateNewEntry, submit, totalHoursStr, s
     <ToolbarGroup firstChild={true} float='left'>
       <AccountsUI/>
       <ToolbarTitle text='Timesheet entry'/>
-      <FlatButton label={`Sort by ${sortBy === 'date' ? 'Project#' : 'Date'}`} onTouchTap={sortByOnClick.bind(this, sortBy)}/>
+      <RaisedButton label={`Sort by ${sortBy === 'date' ? 'Project#' : 'Date'}`} onTouchTap={sortByOnClick.bind(this, sortBy)}/>
     </ToolbarGroup>
     
     <ToolbarGroup float='right'>
       <ToolbarTitle text={totalHoursStr}/>
       <ToolbarSeparator/>
-      <FlatButton label='New' onTouchTap={navigateNewEntry}/>
-      <FlatButton label='Submit' onTouchTap={submit}/>
+      <RaisedButton label='New' onTouchTap={navigateNewEntry}/>
+      <RaisedButton label='Submit' onTouchTap={submit}/>
     </ToolbarGroup>
   </Toolbar>
 );
