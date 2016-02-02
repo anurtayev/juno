@@ -9,6 +9,7 @@ import TextField from 'material-ui/lib/text-field';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import ProjectInput from '../project-input/index.jsx';
 import TaskInput from '../taskInput/index.jsx';
+import ToolBar from './tb.jsx';
 
 export default class Edit extends React.Component {
   
@@ -46,39 +47,34 @@ export default class Edit extends React.Component {
     
     return (
       <div>
-        <AppBar
-          title={<span>Title</span>}
-          iconElementLeft={<IconButton onTouchTap={this.props.navigateEngineering}><NavigationClose /></IconButton>}
-          iconElementRight={
-            <FlatButton 
-              label="Save" 
-              onTouchTap={this.props.saveEntry.bind(this, {
-                _id: this.state._id,
-                date: this.state.date,
-                projectNumber: this.state.project ? this.state.project.projectNumber : '',
-                projectName: this.state.project ? this.state.project.projectName : '',
-                projectTask: this.state.projectTask,
-                hours: this.state.hours,
-                description: this.state.description,
-                submitted: this.state.submitted,
-                invoiced: this.state.invoiced,
-                createdAt: this.state.createdAt,
-                userId: this.state.userId,
-                username: this.state.username,
-              })}
-            />
-          }
+      
+        <ToolBar
+          cancelAction={this.props.navigateEngineering}
+          saveAction={this.props.saveEntry.bind(this, {
+            _id: this.state._id,
+            date: this.state.date,
+            projectNumber: this.state.project ? this.state.project.projectNumber : '',
+            projectName: this.state.project ? this.state.project.projectName : '',
+            projectTask: this.state.projectTask,
+            hours: this.state.hours,
+            description: this.state.description,
+            submitted: this.state.submitted,
+            invoiced: this.state.invoiced,
+            createdAt: this.state.createdAt,
+            userId: this.state.userId,
+            username: this.state.username,
+          })}
         />
           
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
         <Paper zDepth={2}>
         
           <DatePicker 
-            hintText="Date" 
+            hintText='Date' 
             autoOk={true} 
             value={this.state.date} 
             onChange={this.dateOnChange.bind(this)} 
-            container="inline" 
+            container='inline' 
             style={style} 
             underlineStyle={underlineStyle}
           />
@@ -107,7 +103,7 @@ export default class Edit extends React.Component {
           <Divider />
           
           <TextField 
-            hintText="Hours" 
+            hintText='Hours' 
             underlineStyle={underlineStyle} 
             style={style} 
             onChange={this.hoursOnChange.bind(this)} 
@@ -117,7 +113,7 @@ export default class Edit extends React.Component {
           <Divider />
           
           <TextField 
-            hintText="Description" 
+            hintText='Description' 
             underlineStyle={underlineStyle} 
             style={style} 
             onChange={this.descriptionOnChange.bind(this)} 

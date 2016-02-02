@@ -69,6 +69,6 @@ export default {
   },
   
   sortByOnClick({FlowRouter}, sortBy) {
-    FlowRouter.go(`/engineering?sortBy=${ sortBy === 'date' ? 'projectName' : 'date' }`);
+    FlowRouter.go(`/engineering?sortBy=${ sortBy === 'date' ? 'projectNumber' : 'date' }`);
   }
 };

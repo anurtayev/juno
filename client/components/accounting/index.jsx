@@ -1,19 +1,17 @@
 import React from 'react';
 import EntriesTable from './entriesTable.jsx';
-import EntriesActions from './entriesActions.jsx';
-import AppBar from 'material-ui/lib/app-bar';
-import {useDeps} from 'react-simple-di';
+import AccountingToolBar from './tb.jsx';
 
 export default Entries = ({entries, actions}) => (
   <div>
-    <AppBar
-      title={<span>Invoicing</span>}
-      iconElementRight={<EntriesActions doInvoice={actions().invoicing.doInvoice}/>}
+  
+    <AccountingToolBar
+      doInvoice={actions().invoicing.doInvoice}
+      wipeOut={actions().invoicing.wipeOut}
     />
     
-    {entries.length === 0 ? null : 
-      <EntriesTable entries={entries}/>
-    }
+    {entries.length === 0 ? null : <EntriesTable entries={entries}/>}
+    
   </div>
 );
 

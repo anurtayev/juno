@@ -5,7 +5,7 @@ import {composeWithTracker, composeAll} from 'react-komposer';
 export const composer = ({context, sortBy}, onData) => {
   const {Meteor, Collections} = context();
   
-  const sortOption = sortBy === 'date' ? {sort: {date: 1}} : {sort: {projectName: 1}} ;
+  const sortOption = sortBy === 'date' ? {sort: {date: 1}} : {sort: {projectNumber: 1}} ;
   
   if (Meteor.subscribe('entries.engineering').ready()) {
     const entries = Collections.Entries.find({userId: Meteor.userId()}, sortOption).fetch();

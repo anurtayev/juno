@@ -68,7 +68,7 @@ export default class ProjectInput extends React.Component {
     
     return (
       <div>
-        <TextField hintText="Project" value={this.state.textFieldValue} onChange={this.onChange.bind(this)} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} underlineStyle={this.props.underlineStyle} style={this.props.style} fullWidth/>
+        <TextField hintText='Project' value={this.state.textFieldValue} onChange={this.onChange.bind(this)} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} underlineStyle={this.props.underlineStyle} style={this.props.style} fullWidth/>
         {this.state.showTable ? <ProjectsTable projects={filteredProjects} projectOnChange={this.projectOnChange.bind(this)} onMouseInsideTable={this.onMouseInsideTable.bind(this)} onMouseOutsideTable={this.onMouseOutsideTable.bind(this)}/> : null}
       </div>
     );

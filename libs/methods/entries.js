@@ -29,6 +29,10 @@ export default function () {
     
     'entries.delete'( entryId ) {
       Entries.remove({ _id: entryId });
+    },
+    
+    'entries.wipeOut'() {
+      Entries.remove({ submitted: true, invoiced: true });
     }
   });
 }

@@ -11,7 +11,7 @@ export default EngineeringToolbar = ({navigateNewEntry, submit, totalHoursStr, s
     <ToolbarGroup firstChild={true} float='left'>
       <AccountsUI/>
       <ToolbarTitle text='Timesheet entry'/>
-      <FlatButton label={`Sort by ${sortBy === 'date' ? 'Project name' : 'Date'}`} onTouchTap={sortByOnClick.bind(this, sortBy)}/>
+      <FlatButton label={`Sort by ${sortBy === 'date' ? 'Project#' : 'Date'}`} onTouchTap={sortByOnClick.bind(this, sortBy)}/>
     </ToolbarGroup>
     
     <ToolbarGroup float='right'>
