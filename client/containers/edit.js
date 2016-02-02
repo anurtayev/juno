@@ -7,9 +7,15 @@ export const composer = ({context, clearErrors, entryId}, onData) => {
   const {LocalState, Meteor, Collections} = context();
   
   const error = LocalState.get('SAVING_ERROR');
-  if (Meteor.userId() && Meteor.user() && Meteor.subscribe('projects').ready()) {
+  if (
+    Meteor.userId() && 
+    Meteor.user() && 
+    Meteor.subscribe('projects').ready() &&
+    ( entryId ? Meteor.subscribe('entries.engineering.edit', entryId).ready() : true )
+  ) {
     
     const entry = entryId ? Collections.Entries.findOne({_id: entryId}) : null;
+    console.log(`edit container entryId: ${entryId}, entry: ${entry}`);
     const projects = Collections.Projects.find().fetch();
     const userId = Meteor.userId();
     const username = Meteor.user().username;

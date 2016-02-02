@@ -1,0 +1,10 @@
+var m = Meteor.connection._mongo_livedata_collections;
+for (var c in m) {
+  console.log(c);
+  console.log(c.find().count());
+ 
+  var count = m[c].find().count();
+  if (count) {
+    console.log(m[c].name + ": " + count);
+  }
+}

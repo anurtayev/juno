@@ -54,7 +54,6 @@ export default {
   },
   
   editEntry({Meteor, FlowRouter}, entryId) {
-    console.log(`editEntry entryId: ${entryId}`);
     FlowRouter.go(`/edit/${entryId}`);
   },
   
