@@ -24,9 +24,10 @@ export const initRoutes = (context, actions) => {
 
   FlowRouter.route('/engineering', {
     name: 'engineering',
-    action() {
+    action(params, queryParams) {
+      const sortBy = queryParams.sortBy ? queryParams.sortBy : 'date';
       mount(MainLayoutCtx, {
-        content: () => (<EngineeringEntries/>)
+        content: () => (<EngineeringEntries sortBy={sortBy}/>)
       });
     }
   });

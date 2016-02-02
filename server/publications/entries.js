@@ -3,7 +3,7 @@ import {Meteor} from 'meteor/meteor';
 
 export default function () {
   Meteor.publish('entries.engineering', function () {
-    return Entries.find({userId: this.userId}, {sort: {createdAt: -1}});
+    return Entries.find({userId: this.userId});
   });
 
   Meteor.publish('entries.accounting', function () {

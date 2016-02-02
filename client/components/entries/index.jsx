@@ -4,46 +4,36 @@ import EngineeringToolbar from './tb.jsx';
 import AppBar from 'material-ui/lib/app-bar';
 import {useDeps} from 'react-simple-di';
 
-export default class Entries extends React.Component {
+export default Entries = ({entries, actions, sortBy}) => {
   
-  constructor(props) {
-    super(props);
-    this.state = { sortBy: 'date'};
-  }
+  const totalHours = entries.reduce( (previousValue, currentValue, currentIndex, array) => {
+    return previousValue + (currentValue.submitted ? 0 : currentValue.hours);
+  }, 0);
   
-  onSortByClick() {
-    this.setState({ sortBy: this.state.sortBy === 'date' ? 'projectName' : 'date' });
-  }
-  
-  render() {
-    const {entries, actions} = this.props;
-    
-    const totalHours = entries.reduce( (previousValue, currentValue, currentIndex, array) => {
-      return previousValue + (currentValue.submitted ? 0 : currentValue.hours);
-    }, 0);
-    
-    return (
-      <div>
-        <EngineeringToolbar 
-          navigateNewEntry={actions().entries.navigateNewEntry} 
-          submit={actions().entries.submit}
-          totalHoursStr={`Total unsubmitted hours: ${totalHours}`}
-          sortBy={this.state.sortBy}
+  return (
+    <div>
+      <EngineeringToolbar 
+        navigateNewEntry={actions().entries.navigateNewEntry} 
+        submit={actions().entries.submit}
+        totalHoursStr={`Total unsubmitted hours: ${totalHours}`}
+        sortBy={sortBy}
+        sortByOnClick={actions().entries.sortByOnClick}
+      />
+      
+      {entries.length === 0 ? null : 
+        <EntriesTable 
+          entries={entries}
+          deleteEntry={actions().entries.deleteEntry}
+          copyEntry={actions().entries.copyEntry}
+          editEntry={actions().entries.editEntry}
         />
-        
-        {entries.length === 0 ? null : 
-          <EntriesTable 
-            entries={entries}
-            deleteEntry={actions().entries.deleteEntry}
-            copyEntry={actions().entries.copyEntry}
-            editEntry={actions().entries.editEntry}
-          />
-        }
-      </div>
-    );
-  }  
-};
+      }
+    </div>
+  );
+  
+}
 
-Entries.propTypes = { 
+Entries.propTypes = {
+  sortBy: React.PropTypes.string, 
   entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired
 };

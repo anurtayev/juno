@@ -54,6 +54,7 @@ export default {
   },
   
   editEntry({Meteor, FlowRouter}, entryId) {
+    console.log(`editEntry entryId: ${entryId}`);
     FlowRouter.go(`/edit/${entryId}`);
   },
   
@@ -66,5 +67,9 @@ export default {
         return LocalState.set('SAVING_ERROR', err.message);
       }
     });
+  },
+  
+  sortByOnClick({FlowRouter}, sortBy) {
+    FlowRouter.go(`/engineering?sortBy=${ sortBy === 'date' ? 'projectName' : 'date' }`);
   }
 };

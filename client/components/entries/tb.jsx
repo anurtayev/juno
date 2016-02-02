@@ -6,12 +6,12 @@ import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
 import ToolbarSeparator from 'material-ui/lib/toolbar/toolbar-separator';
 import React from 'react';
 
-export default EngineeringToolbar = ({navigateNewEntry, submit, totalHoursStr}) => (
+export default EngineeringToolbar = ({navigateNewEntry, submit, totalHoursStr, sortBy, sortByOnClick}) => (
   <Toolbar>
     <ToolbarGroup firstChild={true} float='left'>
-      <ToolbarTitle text='Timesheet entry'/>
-      <ToolbarSeparator/>
       <AccountsUI/>
+      <ToolbarTitle text='Timesheet entry'/>
+      <FlatButton label={`Sort by ${sortBy === 'date' ? 'Project name' : 'Date'}`} onTouchTap={sortByOnClick.bind(this, sortBy)}/>
     </ToolbarGroup>
     
     <ToolbarGroup float='right'>
@@ -24,6 +24,8 @@ export default EngineeringToolbar = ({navigateNewEntry, submit, totalHoursStr}) 
 );
 
 EngineeringToolbar.propTypes = {
+  sortBy: React.PropTypes.string.isRequired,
+  sortByOnClick: React.PropTypes.func.isRequired,
   navigateNewEntry: React.PropTypes.func.isRequired,
   submit: React.PropTypes.func.isRequired,
   totalHoursStr: React.PropTypes.string.isRequired
