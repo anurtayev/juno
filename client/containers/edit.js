@@ -15,7 +15,6 @@ export const composer = ({context, clearErrors, entryId}, onData) => {
   ) {
     
     const entry = entryId ? Collections.Entries.findOne({_id: entryId}) : null;
-    console.log(`edit container entryId: ${entryId}, entry: ${entry}`);
     const projects = Collections.Projects.find().fetch();
     const userId = Meteor.userId();
     const username = Meteor.user().username;
