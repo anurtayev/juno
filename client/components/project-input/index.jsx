@@ -60,7 +60,7 @@ export default class ProjectInput extends React.Component {
       filteredProjects = [];
       this.props.projects.forEach( project => {
         const searchStr = project.projectNumber + project.projectName + project.location;
-        if ( searchStr.indexOf( this.state.textFieldValue ) > -1 ) filteredProjects.push( project );
+        if ( searchStr.toUpperCase().indexOf( this.state.textFieldValue.toUpperCase() ) > -1 ) filteredProjects.push( project );
       })
     } else {
       filteredProjects = this.props.projects;
