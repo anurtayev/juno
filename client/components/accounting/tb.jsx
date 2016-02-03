@@ -7,7 +7,7 @@ import React from 'react';
 
 export default EngineeringToolbar = ({doInvoice, wipeOut}) => (
   <Toolbar>
-    <ToolbarGroup firstChild={true} float='left'>
+    <ToolbarGroup float='left'>
       <AccountsUI/>
       <ToolbarTitle text='Invoicing'/>
     </ToolbarGroup>

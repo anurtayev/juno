@@ -7,7 +7,7 @@ import React from 'react';
 
 export default EngineeringToolbar = ({cancelAction, saveAction}) => (
   <Toolbar>
-    <ToolbarGroup firstChild={true} float='left'>
+    <ToolbarGroup float='left'>
       <AccountsUI/>
       <ToolbarTitle text='Edit entry'/>
     </ToolbarGroup>

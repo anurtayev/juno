@@ -8,7 +8,7 @@ import React from 'react';
 
 export default EngineeringToolbar = ({navigateNewEntry, submit, totalHoursStr, sortBy, sortByOnClick}) => (
   <Toolbar>
-    <ToolbarGroup firstChild={true} float='left'>
+    <ToolbarGroup float='left'>
       <AccountsUI/>
       <ToolbarTitle text='Timesheet entry'/>
       <RaisedButton label={`Sort by ${sortBy === 'date' ? 'Project#' : 'Date'}`} onTouchTap={sortByOnClick.bind(this, sortBy)}/>
