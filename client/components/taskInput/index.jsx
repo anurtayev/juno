@@ -17,7 +17,7 @@ export default class TaskInput extends React.Component {
       mouseInsideTable: false,
       showTable: true
     });
-    this.props.taskOnChange(null);
+    this.props.taskOnSelect('');
   }
   
   onBlur() {
@@ -47,7 +47,7 @@ export default class TaskInput extends React.Component {
     if (this.props.value) {
       filteredTable = [];
       this.props.tasks.forEach( task => {
-        if ( task.indexOf( this.props.value ) > -1 ) filteredTable.push( task );
+        if ( task.toUpperCase().indexOf( this.props.value.toUpperCase() ) > -1 ) filteredTable.push( task );
       })
     } else {
       filteredTable = this.props.tasks;
