@@ -15,7 +15,7 @@ export default class MainLayout extends React.Component {
   
   getRoutingTable() {
     return {
-      elmira: {
+      'elmiranurtayev@gmail.com': {
         accounting: {
           entrypoint: true
         }

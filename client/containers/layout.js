@@ -3,7 +3,7 @@ import {Meteor} from 'meteor/meteor';
 import {composeWithTracker} from 'react-komposer';
 
 export const composer = (props, onData) => {
-  const username = Meteor.user() ? Meteor.user().username : '';
+  const username = Meteor.user() ? Meteor.user().emails[0].address : '';
   onData(null, {username});
 };
 
