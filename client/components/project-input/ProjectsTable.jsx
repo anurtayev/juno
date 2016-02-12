@@ -1,4 +1,4 @@
-import ProjectRow from './projectRow.jsx';
+import ProjectRow from './row.jsx';
 
 export default ProjectsTable = ({projects, onMouseInsideTable, onMouseOutsideTable, projectOnChange}) => (
   
