@@ -6,7 +6,7 @@ export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   
   if (Meteor.subscribe('entries.accounting').ready()) {
-    const entries = Collections.Entries.find({ submitted: true }, {sort: {createdAt: -1}}).fetch();
+    const entries = Collections.Entries.find({ submitted: true }, {sort: {username:1, createdAt: -1}}).fetch();
 
     onData(null, {entries});
   }
