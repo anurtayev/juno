@@ -31,7 +31,7 @@ export default class ProjectInput extends React.Component {
   projectOnChange(selectedProject) {
     this.setState({
       selectedProject: selectedProject,
-      textFieldValue: `${selectedProject.projectNumber} ${selectedProject.projectName} ${selectedProject.location}`
+      textFieldValue: `${selectedProject.projectNumber} ${selectedProject.projectName}`
     });
     this.props.projectOnChange(selectedProject);
     this.looseFocus();
