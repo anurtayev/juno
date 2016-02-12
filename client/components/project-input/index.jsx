@@ -8,7 +8,7 @@ export default class ProjectInput extends React.Component {
     super(props);
     this.state = {
       selectedProject: props.selectedProject,
-      textFieldValue: props.selectedProject ? `${props.selectedProject.projectNumber} ${props.selectedProject.projectName} ${props.selectedProject.location}` : '',
+      textFieldValue: props.selectedProject ? `${props.selectedProject.projectNumber} ${props.selectedProject.projectName}` : '',
       mouseInsideTable: false,
       showTable: false
     };
