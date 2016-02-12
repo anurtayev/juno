@@ -17,7 +17,7 @@ export const composer = ({context, clearErrors, entryId}, onData) => {
     const entry = entryId ? Collections.Entries.findOne({_id: entryId}) : null;
     const projects = Collections.Projects.find({}, {sort: {projectNumber: 1}}).fetch();
     const userId = Meteor.userId();
-    const username = Meteor.user().username;
+    const username = Meteor.user().emails[0].address;
     onData(null, {error, userId, username, entry, projects});
   }
 
