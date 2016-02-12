@@ -137,7 +137,7 @@ export default class Edit extends React.Component {
   }
   
   hoursOnChange(event) {
-    this.setState({hours: parseInt(event.target.value)});
+    this.setState({hours: isNaN(parseInt(event.target.value)) ? 0 : parseInt(event.target.value)});
   }
   
   descriptionOnChange(event) {
