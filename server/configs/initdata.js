@@ -133,5 +133,16 @@ export default function () {
     Projects.insert({ projectNumber: "15193", projectName: "Lowe's Grande Prairie", tasks: LowesTasks });
     Projects.insert({ projectNumber: "15194", projectName: "Lowe's Bowmanville (Clarington)", tasks: LowesTasks });
     Projects.insert({ projectNumber: "15195", projectName: "Lowe's Spruce Grove", tasks: LowesTasks });
+  } else {
+    console.log('new projects...')
+    if ( Projects.find({ projectNumber: "13049" }).fetch().length === 0 ) {
+      console.log('added new project 13049')
+      Projects.insert({ projectNumber: "13049", projectName: "Lowe’s of Guelph", tasks: LowesTasks });
+    }
+    
+    if ( Projects.find({ projectNumber: "10000" }).fetch().length === 0 ) {
+      console.log('added new project 10000')
+      Projects.insert({ projectNumber: "10000", projectName: "Vacation", tasks: [ 'Vacation' ] });
+    }
   }
 }
