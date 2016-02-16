@@ -134,7 +134,6 @@ export default function () {
     Projects.insert({ projectNumber: "15194", projectName: "Lowe's Bowmanville (Clarington)", tasks: LowesTasks });
     Projects.insert({ projectNumber: "15195", projectName: "Lowe's Spruce Grove", tasks: LowesTasks });
   } else {
-    console.log('new projects...')
     if ( Projects.find({ projectNumber: "13049" }).fetch().length === 0 ) {
       console.log('added new project 13049')
       Projects.insert({ projectNumber: "13049", projectName: "Lowe’s of Guelph", tasks: LowesTasks });
