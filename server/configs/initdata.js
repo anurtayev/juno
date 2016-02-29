@@ -24,7 +24,7 @@ export default function () {
     "2026.10 - Contract Admin - Provide Civil Letter of General Conformance",
     "2026.11 - Contract Admin - General Coordination",
   ];
-  
+
   const tasks2 = [
     '100 - PM',
     '200 - Planning',
@@ -32,7 +32,7 @@ export default function () {
     '400 - Engineering',
     '500 - Contract Admin'
   ];
-  
+
   if (!Projects.findOne()) {
     // non Lowes
     Projects.insert({ projectNumber: "14050", projectName: "0976440 BC Ltd. - 3011 No. 5 Road, Richmond", tasks: tasks2 });
@@ -71,7 +71,7 @@ export default function () {
     Projects.insert({ projectNumber: "15198", projectName: "Arbutus Harvest Block", tasks: tasks2 });
     Projects.insert({ projectNumber: "15199", projectName: "Arbutus Meadows Market Commercial", tasks: tasks2 });
     Projects.insert({ projectNumber: "15200", projectName: "Arbutus Struthers Park", tasks: tasks2 });
-    
+
     // Lowes
     Projects.insert({ projectNumber: "14054", projectName: "Lowe's North Etobicoke Tim's", tasks: LowesTasks });
     Projects.insert({ projectNumber: "14060", projectName: "Lowe's of Sault Ste. Marie", tasks: LowesTasks });
@@ -133,15 +133,12 @@ export default function () {
     Projects.insert({ projectNumber: "15193", projectName: "Lowe's Grande Prairie", tasks: LowesTasks });
     Projects.insert({ projectNumber: "15194", projectName: "Lowe's Bowmanville (Clarington)", tasks: LowesTasks });
     Projects.insert({ projectNumber: "15195", projectName: "Lowe's Spruce Grove", tasks: LowesTasks });
+    Projects.insert({ projectNumber: "13049", projectName: "Lowe’s of Guelph", tasks: LowesTasks });
+    Projects.insert({ projectNumber: "10000", projectName: "Vacation", tasks: [ 'Vacation' ] });
   } else {
-    if ( Projects.find({ projectNumber: "13049" }).fetch().length === 0 ) {
-      console.log('added new project 13049')
-      Projects.insert({ projectNumber: "13049", projectName: "Lowe’s of Guelph", tasks: LowesTasks });
-    }
-    
-    if ( Projects.find({ projectNumber: "10000" }).fetch().length === 0 ) {
-      console.log('added new project 10000')
-      Projects.insert({ projectNumber: "10000", projectName: "Vacation", tasks: [ 'Vacation' ] });
+    if ( Projects.find({ projectNumber: "15201" }).fetch().length === 0 ) {
+      Projects.insert({ projectNumber: "15201", projectName: "WAM – 6560 Langstaff Road", tasks: tasks2 });
+      console.log('added new project 15201')
     }
   }
 }
