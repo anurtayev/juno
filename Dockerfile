@@ -1,4 +1,5 @@
 FROM node
+MAINTAINER Adil Nurtayev "anurtayev@yahoo.com"
 
 RUN curl https://install.meteor.com/ | sh
 
