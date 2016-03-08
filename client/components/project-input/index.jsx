@@ -1,9 +1,10 @@
 import React from 'react';
+//...
 import ProjectsTable from './projectsTable.jsx';
 import TextField from 'material-ui/lib/text-field';
 
 export default class ProjectInput extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +14,7 @@ export default class ProjectInput extends React.Component {
       showTable: false
     };
   }
-  
+
   onFocus() {
     this.setState({
       selectedProject: null,
@@ -23,11 +24,11 @@ export default class ProjectInput extends React.Component {
     });
     this.props.projectOnChange(null);
   }
-  
+
   onBlur() {
     if ( !this.state.mouseInsideTable ) this.looseFocus();
   }
-  
+
   projectOnChange(selectedProject) {
     this.setState({
       selectedProject: selectedProject,
@@ -36,24 +37,24 @@ export default class ProjectInput extends React.Component {
     this.props.projectOnChange(selectedProject);
     this.looseFocus();
   }
-  
+
   looseFocus() {
     if ( this.state.mouseInsideTable ) this.setState({ mouseInsideTable: false });
     this.setState({ showTable: false });
   }
-  
+
   onMouseInsideTable() {
     this.setState({ mouseInsideTable: true });
   }
-  
+
   onMouseOutsideTable() {
     this.setState({ mouseInsideTable: false });
   }
-  
+
   onChange(e) {
     this.setState({ textFieldValue: e.target.value });
   }
-  
+
   render() {
     let filteredProjects;
     if (this.state.textFieldValue) {
@@ -65,7 +66,7 @@ export default class ProjectInput extends React.Component {
     } else {
       filteredProjects = this.props.projects;
     }
-    
+
     return (
       <div>
         <TextField hintText='Project' value={this.state.textFieldValue} onChange={this.onChange.bind(this)} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} underlineStyle={this.props.underlineStyle} style={this.props.style} fullWidth/>
