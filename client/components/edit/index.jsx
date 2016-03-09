@@ -50,25 +50,11 @@ export default class Edit extends React.Component {
 
         <ToolBar
           cancelAction={this.props.navigateEngineering}
-          saveAction={this.props.saveEntry.bind(this, {
-            _id: this.state._id,
-            date: this.state.date,
-            projectNumber: this.state.project ? this.state.project.projectNumber : '',
-            projectName: this.state.project ? this.state.project.projectName : '',
-            projectTask: this.state.projectTask,
-            hours: this.state.hours,
-            description: this.state.description,
-            submitted: this.state.submitted,
-            invoiced: this.state.invoiced,
-            createdAt: this.state.createdAt,
-            userId: this.state.userId,
-            username: this.state.username,
-          })}
+          saveAction={this.saveEntry}
         />
 
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
-        <Paper zDepth={2}>
-
+        <Paper zDepth={2} onKeyPress={this.onKeyPress.bind(this)}>
           <DatePicker
             hintText='Date'
             autoOk={true}
@@ -78,8 +64,7 @@ export default class Edit extends React.Component {
             style={style}
             underlineStyle={underlineStyle}
           />
-
-          <Divider />
+          <Divider/>
 
           <ProjectInput
             underlineStyle={underlineStyle}
@@ -88,7 +73,6 @@ export default class Edit extends React.Component {
             projects={this.props.projects}
             selectedProject={this.state.project}
           />
-
           <Divider/>
 
           <TaskInput
@@ -99,7 +83,6 @@ export default class Edit extends React.Component {
             taskOnSelect={this.taskOnSelect.bind(this)}
             value={this.state.taskInput_value}
           />
-
           <Divider />
 
           <TextField
@@ -109,7 +92,6 @@ export default class Edit extends React.Component {
             onChange={this.hoursOnChange.bind(this)}
             value={this.state.hours}
           />
-
           <Divider />
 
           <TextField
@@ -120,7 +102,6 @@ export default class Edit extends React.Component {
             fullWidth
             value={this.state.description}
           />
-
           <Divider />
         </Paper>
       </div>
@@ -153,6 +134,29 @@ export default class Edit extends React.Component {
       projectTask: task,
       taskInput_value: task
     });
+  }
+
+  saveEntry() {
+    this.props.saveEntry({
+      _id: this.state._id,
+      date: this.state.date,
+      projectNumber: this.state.project ? this.state.project.projectNumber : '',
+      projectName: this.state.project ? this.state.project.projectName : '',
+      projectTask: this.state.projectTask,
+      hours: this.state.hours,
+      description: this.state.description,
+      submitted: this.state.submitted,
+      invoiced: this.state.invoiced,
+      createdAt: this.state.createdAt,
+      userId: this.state.userId,
+      username: this.state.username,
+    })
+  }
+
+  onKeyPress(e) {
+    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+      this.saveEntry();
+    }
   }
 }
 
