@@ -50,7 +50,7 @@ export default class Edit extends React.Component {
 
         <ToolBar
           cancelAction={this.props.navigateEngineering}
-          saveAction={this.saveEntry}
+          saveAction={this.saveEntry.bind(this)}
         />
 
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
