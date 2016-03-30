@@ -148,4 +148,7 @@ export default function () {
 
   Projects.insert({ projectNumber: "16204", projectName: "CRH - Lakeshore West Mississauga", tasks: tasks2 });
   Projects.insert({ projectNumber: "16205", projectName: "Terracap Edmonton", tasks: tasks2 });
+
+  // 20160330
+  Projects.insert({ projectNumber: "16206", projectName: "Brantford Conklin (VGA)", tasks: tasks2 });
 }
