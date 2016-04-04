@@ -151,4 +151,7 @@ export default function () {
 
   // 20160330
   Projects.insert({ projectNumber: "16206", projectName: "Brantford Conklin (VGA)", tasks: tasks2 });
+
+  // 20160404
+  Projects.insert({ projectNumber: "16207", projectName: "Junction Shopping Center - RioCan", tasks: tasks2 });
 }
