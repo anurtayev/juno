@@ -1,3 +1,4 @@
+import React from 'react'
 
 export default ProjectRow = ({project, projectOnChange}) => (
   <div onClick={projectOnChange.bind(null, project)} className='row selectRow'>

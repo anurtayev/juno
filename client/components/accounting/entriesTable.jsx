@@ -5,12 +5,13 @@ import TableFooter from 'material-ui/lib/table/table-footer';
 import TableHeader from 'material-ui/lib/table/table-header';
 import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
 import TableRow from 'material-ui/lib/table/table-row';
-import TableRowColumn from 'material-ui/lib/table/table-row-column';
+import TableRowColumn from 'material-ui/lib/table/table-row-column'
+import React from 'react'
 
 export default EntriesTable = ({entries}) => (
   <Table selectable={false}>
     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-    
+
       <TableRow>
         <TableHeaderColumn style={{width: '2rem'}}>&#8230;</TableHeaderColumn>
         <TableHeaderColumn style={{width: '1rem'}}>Date</TableHeaderColumn>
@@ -20,14 +21,14 @@ export default EntriesTable = ({entries}) => (
         <TableHeaderColumn style={{width: '5rem'}}>Description</TableHeaderColumn>
         <TableHeaderColumn style={{width: '2rem'}}>User</TableHeaderColumn>
       </TableRow>
-      
+
     </TableHeader >
     <TableBody stripedRows showRowHover displayRowCheckbox={false}>
-    
+
       {entries.map( (entry) => (
-        
+
         <TableRow  key={entry._id}>
-          
+
           <TableRowColumn style={{width: '2rem'}}>{entry.invoiced ? '\u2713' : ''}</TableRowColumn>
           <TableRowColumn style={{width: '1rem'}}>{moment(entry.date).format('D-MM-YY')}</TableRowColumn>
           <TableRowColumn style={{width: '2rem'}}>{entry.projectNumber}</TableRowColumn>
@@ -37,13 +38,13 @@ export default EntriesTable = ({entries}) => (
           <TableRowColumn style={{width: '2rem'}}>{entry.username}</TableRowColumn>
 
         </TableRow>
-        
+
       ))}
-      
+
     </TableBody>
   </Table>
 );
 
-EntriesTable.propTypes = { 
+EntriesTable.propTypes = {
   entries: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired
 };

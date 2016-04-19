@@ -1,7 +1,7 @@
-import entries from './entries';
-import projects from './projects';
+import entries from './entries'
+import projects from './projects'
 
-export default function () {
+export default () => {
   entries();
   projects();
 }

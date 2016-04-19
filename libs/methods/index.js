@@ -1,5 +1,5 @@
-import entries from './entries';
+import entries from './entries'
 
-export default function () {
+export default () => {
   entries();
 }

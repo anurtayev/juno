@@ -1,4 +1,6 @@
-import {Projects} from '/libs/collections';
+import qq from '/libs/collections';
+
+const {Projects} = qq
 
 export default function () {
   const LowesTasks = [

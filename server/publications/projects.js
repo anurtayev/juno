@@ -1,7 +1,9 @@
-import {Projects} from '/libs/collections';
+import qq from '/libs/collections';
 import {Meteor} from 'meteor/meteor';
 
-export default function () {
+const {Projects} = qq
+
+export default () => {
   Meteor.publish('projects', function () {
     return Projects.find({});
   });

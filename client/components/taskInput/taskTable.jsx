@@ -1,11 +1,13 @@
+import React from 'react'
+
 export default TaskTable = ({tasks, onMouseInsideTable, onMouseOutsideTable, taskOnSelect}) => (
-  
+
   <div onMouseOver={onMouseInsideTable} onMouseOut={onMouseOutsideTable} className='container-fluid'>
-  
+
     {tasks.map( task => (
       <div onClick={taskOnSelect.bind(null, task)} key={task} className='selectRow'>{task}</div>
     ))}
-    
+
   </div>
 );
 

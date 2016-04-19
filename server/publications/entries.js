@@ -1,7 +1,9 @@
-import {Entries} from '/libs/collections';
-import {Meteor} from 'meteor/meteor';
+import qq from '/libs/collections'
+import {Meteor} from 'meteor/meteor'
 
-export default function () {
+const {Entries} = qq
+
+export default () => {
   Meteor.publish('entries.engineering', function () {
     return Entries.find({userId: this.userId});
   });
