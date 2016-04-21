@@ -6,6 +6,7 @@ import {mount} from 'react-mounter';
 import MainLayout from '../containers/layout';
 import EngineeringEntries from '../containers/engineeringEntries';
 import AccountingEntries from '../containers/accountingEntries';
+import ProjectsEntries from '../containers/projectsEntries';
 import Edit from '../containers/edit';
 import Dashboard from '../components/dashboard/index.jsx';
 
@@ -37,6 +38,15 @@ export const initRoutes = (context, actions) => {
     action() {
       mount(MainLayoutCtx, {
         content: () => (<AccountingEntries/>)
+      });
+    }
+  });
+
+  FlowRouter.route('/projectsentries', {
+    name: 'projectsentries',
+    action() {
+      mount(MainLayoutCtx, {
+        content: () => (<ProjectsEntries/>)
       });
     }
   });

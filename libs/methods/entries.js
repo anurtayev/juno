@@ -1,10 +1,10 @@
-import qq from '/libs/collections';
+import Collections from '/libs/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
-const {Entries} = qq
+const {Entries, Projects} = Collections
 
-export default function () {
+export default () => {
   Meteor.methods({
     'entries.insert' ( entry ) {
       Entries.insert(entry);
@@ -35,6 +35,22 @@ export default function () {
 
     'entries.wipeOut'() {
       Entries.remove({ submitted: true, invoiced: true });
+    },
+
+    'projects.insert'(project) {
+      Projects.insert(project);
+    },
+
+    'projects.update'(project) {
+      Projects.update({ _id: project._id }, { $set: {
+        projectNumber: project.projectNumber,
+        projectName: project.projectName,
+        projectTasks: project.projectTasks
+      } });
+    },
+
+    'projects.delete'(projectId ) {
+      Projects.remove({ _id: projectId });
     }
   });
 }

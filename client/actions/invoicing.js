@@ -8,10 +8,18 @@ export default {
     Meteor.call('entries.invoice');
     // FlowRouter.go(`/accounting`);
   },
-  
+
   wipeOut({Meteor}) {
     if (confirm('This will WIPE OUT all submitted and invoiced entries!')) {
       Meteor.call('entries.wipeOut');
     }
+  },
+
+  onProjectsEntries({FlowRouter}) {
+    FlowRouter.go('/projectsentries');
+  },
+
+  onInvoicing({FlowRouter}) {
+    FlowRouter.go('/accounting');
   }
 };

@@ -5,22 +5,19 @@ import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
 import React from 'react';
 
-export default EngineeringToolbar = ({doInvoice, wipeOut, onProjectsEntries}) => (
+export default EngineeringToolbar = ({onInvoicing}) => (
   <Toolbar>
     <ToolbarGroup float='left'>
       <AccountsUI/>
-      <ToolbarTitle text='Invoicing'/>
+      <ToolbarTitle text='Projects Entries'/>
     </ToolbarGroup>
 
     <ToolbarGroup float='right'>
-      <RaisedButton  label='Projects' onTouchTap={onProjectsEntries}/>
-      <RaisedButton  label='Invoice' onTouchTap={doInvoice}/>
-      <RaisedButton  label='Wipe out' onTouchTap={wipeOut} primary/>
+      <RaisedButton  label='Invoicing' onTouchTap={onInvoicing}/>
     </ToolbarGroup>
   </Toolbar>
 );
 
 EngineeringToolbar.propTypes = {
-  doInvoice: React.PropTypes.func.isRequired,
-  wipeOut: React.PropTypes.func.isRequired
+  onInvoicing: React.PropTypes.func.isRequired
 };
