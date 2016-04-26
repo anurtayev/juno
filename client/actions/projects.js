@@ -7,7 +7,7 @@ export default {
     ) return LocalState.set('SAVING_ERROR', 'required values are missing...');
 
     project._id = project._id ? project._id : Meteor.uuid();
-    Meteor.call(project._id ? 'projects.update' : 'projects.insert', project, (err) => err ? LocalState.set('SAVING_ERROR', err.message) : undefined );
+    Meteor.call(project._id ? 'projects.update' : 'projects.insert', project, err => err ? LocalState.set('SAVING_ERROR', err.message) : undefined );
     FlowRouter.go(`/engineering`);
   },
 
