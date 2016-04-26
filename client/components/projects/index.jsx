@@ -6,10 +6,17 @@ export default Projects = ({projects, actions}) => (
   <div>
 
     <ToolBar
-      onInvoicing={actions().invoicing.onInvoicing}
+      onInvoicing={actions().projects.onInvoicing}
     />
 
-    {projects.length === 0 ? null : <Table projects={projects}/>}
+    {
+      projects.length === 0 ? null :
+      <Table
+        projects={projects}
+        onDelete={actions().projects.onDelete}
+        onCopy={actions().projects.onCopy}
+        onEdit={actions().projects.onEdit}
+      />}
 
   </div>
 );

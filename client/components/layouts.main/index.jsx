@@ -19,7 +19,8 @@ export default class MainLayout extends React.Component {
         accounting: {
           entrypoint: true
         },
-        projectsentries: {}
+        projectsentries: {},
+        editProject: {}
       },
 
       '*': {

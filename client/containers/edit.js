@@ -29,7 +29,7 @@ export const composer = ({context, clearErrors, entryId}, onData) => {
 export const depsMapper = (context, actions) => ({
   saveEntry: actions.entries.insert,
   navigateEngineering: actions.entries.navigateEngineering,
-  clearErrors: actions.entries.clearErrors,
+  clearErrors: actions.common.clearErrors,
   context: () => context,
 });
 

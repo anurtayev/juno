@@ -8,6 +8,7 @@ import EngineeringEntries from '../containers/engineeringEntries';
 import AccountingEntries from '../containers/accountingEntries';
 import ProjectsEntries from '../containers/projectsEntries';
 import Edit from '../containers/edit';
+import EditProject from '../containers/editProject';
 import Dashboard from '../components/dashboard/index.jsx';
 
 export const initRoutes = (context, actions) => {
@@ -47,6 +48,24 @@ export const initRoutes = (context, actions) => {
     action() {
       mount(MainLayoutCtx, {
         content: () => (<ProjectsEntries/>)
+      });
+    }
+  });
+
+  FlowRouter.route('/editProject/:projectId', {
+    name: 'editProject',
+    action({projectId}) {
+      mount(MainLayoutCtx, {
+        content: () => (<EditProject projectId={projectId}/>)
+      });
+    }
+  });
+
+  FlowRouter.route('/newproject', {
+    name: 'newproject',
+    action() {
+      mount(MainLayoutCtx, {
+        content: () => (<EditProject/>)
       });
     }
   });

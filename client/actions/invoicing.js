@@ -17,9 +17,5 @@ export default {
 
   onProjectsEntries({FlowRouter}) {
     FlowRouter.go('/projectsentries');
-  },
-
-  onInvoicing({FlowRouter}) {
-    FlowRouter.go('/accounting');
   }
 };

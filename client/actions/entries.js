@@ -37,10 +37,6 @@ export default {
     }
   },
 
-  clearErrors({LocalState}) {
-    return LocalState.set('SAVING_ERROR', null);
-  },
-
   submit({Meteor, FlowRouter}) {
     if (confirm('This will SUBMIT entries for invoicing!')) {
       Meteor.call('entries.submit');

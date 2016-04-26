@@ -2,7 +2,7 @@ import Collections from '/libs/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
-const {Entries, Projects} = Collections
+const {Entries} = Collections
 
 export default () => {
   Meteor.methods({
@@ -35,22 +35,6 @@ export default () => {
 
     'entries.wipeOut'() {
       Entries.remove({ submitted: true, invoiced: true });
-    },
-
-    'projects.insert'(project) {
-      Projects.insert(project);
-    },
-
-    'projects.update'(project) {
-      Projects.update({ _id: project._id }, { $set: {
-        projectNumber: project.projectNumber,
-        projectName: project.projectName,
-        projectTasks: project.projectTasks
-      } });
-    },
-
-    'projects.delete'(projectId ) {
-      Projects.remove({ _id: projectId });
     }
   });
 }
