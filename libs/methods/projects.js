@@ -14,7 +14,7 @@ export default () => {
       Projects.update({ _id: project._id }, { $set: {
         projectNumber: project.projectNumber,
         projectName: project.projectName,
-        projectTasks: project.projectTasks
+        tasks: project.tasks
       } });
     },
 

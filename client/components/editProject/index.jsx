@@ -81,7 +81,8 @@ export default class EditProject extends React.Component {
     this.props.onSave({
       _id: this.state._id,
       projectNumber: this.state.projectNumber,
-      projectName: this.state.projectName
+      projectName: this.state.projectName,
+			tasks: this.state.tasks
     })
   }
 
