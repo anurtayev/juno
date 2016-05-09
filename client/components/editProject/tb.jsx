@@ -5,14 +5,15 @@ import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
 import React from 'react';
 
-export default EngineeringToolbar = ({onCancel, onSave}) => (
+export default EngineeringToolbar = ({onCancel, onSave, onNewTask}) => (
   <Toolbar>
     <ToolbarGroup float='left'>
       <AccountsUI/>
-      <ToolbarTitle text='Edit entry'/>
+      <ToolbarTitle text='Edit Project'/>
     </ToolbarGroup>
 
     <ToolbarGroup float='right'>
+      <RaisedButton  label='New Task' onTouchTap={onNewTask}/>
       <RaisedButton  label='Save' onTouchTap={onSave}/>
       <RaisedButton  label='Cancel' onTouchTap={onCancel} primary/>
     </ToolbarGroup>

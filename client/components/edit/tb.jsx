@@ -9,9 +9,9 @@ export default EngineeringToolbar = ({cancelAction, saveAction}) => (
   <Toolbar>
     <ToolbarGroup float='left'>
       <AccountsUI/>
-      <ToolbarTitle text='Edit entry'/>
+      <ToolbarTitle text='Edit Entry'/>
     </ToolbarGroup>
-    
+
     <ToolbarGroup float='right'>
       <RaisedButton  label='Save' onTouchTap={saveAction}/>
       <RaisedButton  label='Cancel' onTouchTap={cancelAction} primary/>

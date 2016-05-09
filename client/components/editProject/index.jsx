@@ -39,6 +39,7 @@ export default class EditProject extends React.Component {
         <ToolBar
           onCancel={this.props.onCancel}
           onSave={this.onSave.bind(this)}
+          onNewTask={this.onNewTask}
         />
 
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
@@ -63,7 +64,12 @@ export default class EditProject extends React.Component {
           />
           <Divider />
 
-          <Tasks tasks={this.state.tasks}></Tasks>
+          <Tasks
+            tasks={this.state.tasks}
+            onDelete = {this.onTaskDelete}
+            onCopy = {this.onTaskCopy}
+            onEdit = {this.onTaskEdit}
+          />
         </Paper>
       </div>
     )
@@ -88,8 +94,24 @@ export default class EditProject extends React.Component {
 
   onKeyPress(e) {
     if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-      this.saveEntry();
+      this.onSave();
     }
+  }
+
+  onTaskDelete() {
+
+  }
+
+  onTaskCopy() {
+
+  }
+
+  onTaskEdit() {
+
+  }
+
+  onNewTask() {
+
   }
 }
 
