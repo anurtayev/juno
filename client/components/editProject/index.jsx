@@ -6,8 +6,9 @@ import FlatButton from 'material-ui/lib/flat-button';
 import Divider from 'material-ui/lib/divider';
 import Paper from 'material-ui/lib/paper';
 import TextField from 'material-ui/lib/text-field';
-import ToolBar from './tb.jsx';
+import ToolBar from './tb.jsx'
 import Tasks from './tasks.jsx'
+import { StickyContainer, Sticky } from 'react-sticky'
 
 export default class EditProject extends React.Component {
 
@@ -30,17 +31,20 @@ export default class EditProject extends React.Component {
     };
 
     const style = {
-      marginLeft: 20
+      marginLeft: 20,
+      opacity: 1
     };
 
     return (
-      <div>
+      <StickyContainer>
 
-        <ToolBar
-          onCancel={this.props.onCancel}
-          onSave={this.onSave.bind(this)}
-          onNewTask={this.onNewTask}
-        />
+        <Sticky>
+          <ToolBar
+            onCancel={this.props.onCancel}
+            onSave={this.onSave.bind(this)}
+            onNewTask={this.onNewTask}
+          />
+        </Sticky>
 
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
         <Paper zDepth={2} onKeyPress={this.onKeyPress.bind(this)}>
@@ -71,7 +75,7 @@ export default class EditProject extends React.Component {
             onEdit = {this.onTaskEdit}
           />
         </Paper>
-      </div>
+      </StickyContainer>
     )
   }
 
@@ -111,7 +115,11 @@ export default class EditProject extends React.Component {
   }
 
   onNewTask() {
+    console.log("hey now!");
+    const el = document.getElementById("q1q1");
+    console.log(el.getAttribute("name"));
 
+    el.appendChild(<div><input type="text"></input></div>)
   }
 }
 

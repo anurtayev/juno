@@ -7,7 +7,7 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column'
 import React from 'react'
 
-export default ({tasks, onDelete, onCopy, onEdit}) => (
+export default ({tasks, onDelete, onCopy, onEdit}) =>
   <Table selectable={false}>
     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
 
@@ -39,4 +39,3 @@ export default ({tasks, onDelete, onCopy, onEdit}) => (
 
     </TableBody>
   </Table>
-)
