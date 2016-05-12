@@ -8,7 +8,6 @@ import Paper from 'material-ui/lib/paper';
 import TextField from 'material-ui/lib/text-field';
 import ToolBar from './tb.jsx'
 import Tasks from './tasks.jsx'
-import { StickyContainer, Sticky } from 'react-sticky'
 import EditTask from './editTask.jsx'
 
 export default class EditProject extends React.Component {
@@ -40,34 +39,48 @@ export default class EditProject extends React.Component {
     };
 
     return (
-			<div onKeyPress={this.onKeyPress.bind(this)}>
+			<div>
         <ToolBar
           onCancel={this.props.onCancel}
           onSave={this.onSave.bind(this)}
-          onNewTask={this.onNewTask}
+          onNewTask={this.onNewTask.bind(this)}
 					/>
 
-				{ this.state.displayEditTask ? <EditTask task={this.state.taskPayload} /> : null }
+				{
+          this.state.displayEditTask ?
+          <div onKeyPress={this.onNewTaskKeyPress.bind(this)}>
+            <EditTask
+              task={this.state.taskPayload}
+              onCancel={this.onNewTaskCancel.bind(this)}
+              onSave={this.onNewTaskSave.bind(this)}
+              onChange={this.onNewTaskChange.bind(this)}
+              />
+          </div>
+          : null
+        }
+
 				{ error ? <p style={{color: 'red'}}>{error}</p> : null }
 
-        <TextField
-          hintText='Project number'
-          underlineStyle={underlineStyle}
-          style={style}
-          onChange={this.projectNumberOnChange.bind(this)}
-          value={this.state.projectNumber}
-					/>
+        <div onKeyPress={this.onKeyPress.bind(this)}>
+          <TextField
+            hintText='Project number'
+            underlineStyle={underlineStyle}
+            style={style}
+            onChange={this.projectNumberOnChange.bind(this)}
+            value={this.state.projectNumber}
+  					/>
 
-				<Divider />
+  				<Divider />
 
-        <TextField
-          hintText='Project name'
-          underlineStyle={underlineStyle}
-          style={style}
-          onChange={this.projectNameOnChange.bind(this)}
-          fullWidth
-          value={this.state.projectName}
-					/>
+          <TextField
+            hintText='Project name'
+            underlineStyle={underlineStyle}
+            style={style}
+            onChange={this.projectNameOnChange.bind(this)}
+            fullWidth
+            value={this.state.projectName}
+  					/>
+        </div>
 
         <Divider />
 
@@ -81,12 +94,12 @@ export default class EditProject extends React.Component {
     )
   }
 
-  projectNumberOnChange(event) {
-    this.setState({projectNumber: event.target.value});
+  projectNumberOnChange(e) {
+    this.setState({projectNumber: e.target.value});
   }
 
-  projectNameOnChange(event) {
-    this.setState({projectName: event.target.value});
+  projectNameOnChange(e) {
+    this.setState({projectName: e.target.value});
   }
 
   onSave() {
@@ -118,6 +131,27 @@ export default class EditProject extends React.Component {
 
   onNewTask() {
 		this.setState({taskPayload: '', displayEditTask: true});
+  }
+
+  onNewTaskSave(task) {
+    // TODO: complete the check testing
+    if (this.state.tasks.contains(task)) {
+      this.setState({displayEditTask: false, tasks: [...this.state.tasks, task]});
+    }
+  }
+
+  onNewTaskCancel() {
+    this.setState({displayEditTask: false});
+  }
+
+  onNewTaskChange(e) {
+    this.setState({taskPayload: e.target.value});
+  }
+
+  onNewTaskKeyPress(e) {
+    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+      this.onNewTaskSave(e.target.value);
+    }
   }
 }
 

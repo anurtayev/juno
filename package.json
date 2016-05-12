@@ -26,7 +26,6 @@
     "react-komposer": "^1.2.1",
     "react-mounter": "^1.0.0",
     "react-simple-di": "^1.0.1",
-    "react-sticky": "^5.0.0",
     "react-tap-event-plugin": "^0.2.1"
   }
 }

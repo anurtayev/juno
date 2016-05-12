@@ -15,7 +15,7 @@ export default ({tasks, onDelete, onCopy, onEdit}) =>
         tasks.map(task =>
           <TableRow  key={task}>
             <TableRowColumn style={{width: '2rem'}}>
-              <button onClick={onDelete.bind(this, task)} title='Delete'>&times;</button>
+              <button onClick={onDelete.bind(this, task)} title='Delete'>&#x2715;</button>
               <button onClick={onCopy.bind(this, task)} title='Copy'>&#x2398;</button>
               <button onClick={onEdit.bind(this, task)} title='Edit'>&#x270D;</button>
             </TableRowColumn>
