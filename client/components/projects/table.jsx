@@ -9,19 +9,8 @@ import React from 'react'
 
 export default ProjectsTable = ({projects, onDelete, onCopy, onEdit}) => (
   <Table selectable={false}>
-    <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-
-      <TableRow>
-        <TableHeaderColumn style={{width: '2rem'}}>&#8230;</TableHeaderColumn>
-        <TableHeaderColumn style={{width: '2rem'}}>Project number</TableHeaderColumn>
-        <TableHeaderColumn style={{width: '8rem'}}>Project name</TableHeaderColumn>
-      </TableRow>
-
-    </TableHeader >
     <TableBody stripedRows showRowHover displayRowCheckbox={false}>
-
       {projects.map( (project) => (
-
         <TableRow  key={project._id}>
           <TableRowColumn style={{width: '2rem'}}>
             <button onClick={onDelete.bind(this, project._id)} title='Delete'>&times;</button>
@@ -31,9 +20,7 @@ export default ProjectsTable = ({projects, onDelete, onCopy, onEdit}) => (
           <TableRowColumn style={{width: '2rem'}}>{project.projectNumber}</TableRowColumn>
           <TableRowColumn style={{width: '8rem'}}>{project.projectName}</TableRowColumn>
         </TableRow>
-
       ))}
-
     </TableBody>
   </Table>
 );

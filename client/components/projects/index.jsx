@@ -1,13 +1,13 @@
-import React from 'react';
-import Table from './table.jsx';
-import ToolBar from './tb.jsx';
+import React from 'react'
+import Table from './table.jsx'
+import ToolBar from './tb.jsx'
+import { StickyContainer, Sticky } from 'react-sticky'
 
-export default Projects = ({projects, actions}) => (
-  <div>
-
-    <ToolBar
-      onInvoicing={actions().projects.onInvoicing}
-    />
+export default ({projects, actions}) =>
+  <StickyContainer>
+		<Sticky>
+	    <ToolBar onInvoicing={actions().projects.onInvoicing}/>
+		</Sticky>
 
     {
       projects.length === 0 ? null :
@@ -18,9 +18,4 @@ export default Projects = ({projects, actions}) => (
         onEdit={actions().projects.onEdit}
       />}
 
-  </div>
-);
-
-Projects.propTypes = {
-  projects: React.PropTypes.arrayOf( React.PropTypes.object ).isRequired
-};
+  </StickyContainer>

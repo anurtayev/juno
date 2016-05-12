@@ -9,6 +9,7 @@ import TextField from 'material-ui/lib/text-field';
 import ToolBar from './tb.jsx'
 import Tasks from './tasks.jsx'
 import { StickyContainer, Sticky } from 'react-sticky'
+import EditTask from './editTask.jsx'
 
 export default class EditProject extends React.Component {
 
@@ -19,7 +20,10 @@ export default class EditProject extends React.Component {
       _id: props.project ? props.project._id : null,
       projectNumber: props.project ? props.project.projectNumber : null,
       projectName: props.project ? props.project.projectName : null,
-      tasks: props.project ? props.project.tasks : []
+      tasks: props.project ? props.project.tasks : [],
+
+			displayEditTask: false,
+			taskPayload: '',
     };
   }
 
@@ -36,46 +40,44 @@ export default class EditProject extends React.Component {
     };
 
     return (
-      <StickyContainer>
+			<div onKeyPress={this.onKeyPress.bind(this)}>
+        <ToolBar
+          onCancel={this.props.onCancel}
+          onSave={this.onSave.bind(this)}
+          onNewTask={this.onNewTask}
+					/>
 
-        <Sticky>
-          <ToolBar
-            onCancel={this.props.onCancel}
-            onSave={this.onSave.bind(this)}
-            onNewTask={this.onNewTask}
-          />
-        </Sticky>
+				{ this.state.displayEditTask ? <EditTask task={this.state.taskPayload} /> : null }
+				{ error ? <p style={{color: 'red'}}>{error}</p> : null }
 
-        {error ? <p style={{color: 'red'}}>{error}</p> : null}
-        <Paper zDepth={2} onKeyPress={this.onKeyPress.bind(this)}>
+        <TextField
+          hintText='Project number'
+          underlineStyle={underlineStyle}
+          style={style}
+          onChange={this.projectNumberOnChange.bind(this)}
+          value={this.state.projectNumber}
+					/>
 
-          <TextField
-            hintText='Project number'
-            underlineStyle={underlineStyle}
-            style={style}
-            onChange={this.projectNumberOnChange.bind(this)}
-            value={this.state.projectNumber}
-          />
-          <Divider />
+				<Divider />
 
-          <TextField
-            hintText='Project name'
-            underlineStyle={underlineStyle}
-            style={style}
-            onChange={this.projectNameOnChange.bind(this)}
-            fullWidth
-            value={this.state.projectName}
-          />
-          <Divider />
+        <TextField
+          hintText='Project name'
+          underlineStyle={underlineStyle}
+          style={style}
+          onChange={this.projectNameOnChange.bind(this)}
+          fullWidth
+          value={this.state.projectName}
+					/>
 
-          <Tasks
-            tasks={this.state.tasks}
-            onDelete = {this.onTaskDelete}
-            onCopy = {this.onTaskCopy}
-            onEdit = {this.onTaskEdit}
-          />
-        </Paper>
-      </StickyContainer>
+        <Divider />
+
+        <Tasks
+          tasks={this.state.tasks}
+          onDelete = {this.onTaskDelete}
+          onCopy = {this.onTaskCopy}
+          onEdit = {this.onTaskEdit}
+					/>
+			</div>
     )
   }
 
@@ -115,11 +117,7 @@ export default class EditProject extends React.Component {
   }
 
   onNewTask() {
-    console.log("hey now!");
-    const el = document.getElementById("q1q1");
-    console.log(el.getAttribute("name"));
-
-    el.appendChild(<div><input type="text"></input></div>)
+		this.setState({taskPayload: '', displayEditTask: true});
   }
 }
 

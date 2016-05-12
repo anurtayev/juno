@@ -9,21 +9,10 @@ import React from 'react'
 
 export default ({tasks, onDelete, onCopy, onEdit}) =>
   <Table selectable={false}>
-    <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-
-      <TableRow>
-        <TableHeaderColumn style={{width: '2rem'}}>&#8230;</TableHeaderColumn>
-        <TableHeaderColumn style={{width: '10rem'}}>Task</TableHeaderColumn>
-      </TableRow>
-
-    </TableHeader >
-
     <TableBody stripedRows showRowHover displayRowCheckbox={false}>
-
       {
         tasks ?
         tasks.map(task =>
-
           <TableRow  key={task}>
             <TableRowColumn style={{width: '2rem'}}>
               <button onClick={onDelete.bind(this, task)} title='Delete'>&times;</button>
@@ -32,10 +21,8 @@ export default ({tasks, onDelete, onCopy, onEdit}) =>
             </TableRowColumn>
             <TableRowColumn style={{width: '10rem'}}>{task}</TableRowColumn>
           </TableRow>
-
         ) :
         null
       }
-
     </TableBody>
   </Table>
