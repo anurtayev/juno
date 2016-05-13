@@ -11,16 +11,17 @@ export default ({onCancel, onSave, task, onChange}) =>
     <TableBody displayRowCheckbox={false}>
       <TableRow>
         <TableRowColumn style={{width: '2rem'}}>
-          <button onClick={onSave.bind(this, task)} title='Save'>&#x2713;</button>
-          <button onClick={onCancel.bind(this)} title='Cancel'>&#x2715;</button>
+          <button onClick={onSave} title='Save'>&#x2713;</button>
+          <button onClick={onCancel} title='Cancel'>&#x2715;</button>
         </TableRowColumn>
 
         <TableRowColumn style={{width: '10rem'}}>
 					<TextField
+						id='taskInput'
 						hintText='Task name'
 						underlineStyle={{display: 'none'}}
 						style={{opacity: 1}}
-						onChange={onChange.bind(this)}
+						onChange={onChange}
 						fullWidth
 						value={task}
 						/>

@@ -1,11 +1,12 @@
-import React from 'react';
-import AppBar from 'material-ui/lib/app-bar';
-import IconButton from 'material-ui/lib/icon-button';
-import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
-import FlatButton from 'material-ui/lib/flat-button';
-import Divider from 'material-ui/lib/divider';
-import Paper from 'material-ui/lib/paper';
-import TextField from 'material-ui/lib/text-field';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import AppBar from 'material-ui/lib/app-bar'
+import IconButton from 'material-ui/lib/icon-button'
+import NavigationClose from 'material-ui/lib/svg-icons/navigation/close'
+import FlatButton from 'material-ui/lib/flat-button'
+import Divider from 'material-ui/lib/divider'
+import Paper from 'material-ui/lib/paper'
+import TextField from 'material-ui/lib/text-field'
 import ToolBar from './tb.jsx'
 import Tasks from './tasks.jsx'
 import EditTask from './editTask.jsx'
@@ -23,6 +24,7 @@ export default class EditProject extends React.Component {
 
 			displayEditTask: false,
 			taskPayload: '',
+      taskEdited: '',
     };
   }
 
@@ -86,9 +88,9 @@ export default class EditProject extends React.Component {
 
         <Tasks
           tasks={this.state.tasks}
-          onDelete = {this.onTaskDelete}
-          onCopy = {this.onTaskCopy}
-          onEdit = {this.onTaskEdit}
+          onDelete = {this.onTaskDelete.bind(this)}
+          onCopy = {this.onTaskCopy.bind(this)}
+          onEdit = {this.onTaskEdit.bind(this)}
 					/>
 			</div>
     )
@@ -117,27 +119,55 @@ export default class EditProject extends React.Component {
     }
   }
 
-  onTaskDelete() {
-
+  onTaskDelete(task) {
+    const removeIndex = this.state.tasks.indexOf(task)
+    this.setState({tasks: [ ...this.state.tasks.slice(0, removeIndex),
+      ...this.state.tasks.slice(removeIndex + 1)]});
   }
 
-  onTaskCopy() {
-
+  onTaskCopy(task) {
+    this.setState({taskPayload: task, displayEditTask: true});
   }
 
-  onTaskEdit() {
-
+  onTaskEdit(task) {
+    this.setState({taskPayload: task, taskEdited: task, displayEditTask: true});
   }
 
   onNewTask() {
 		this.setState({taskPayload: '', displayEditTask: true});
   }
 
-  onNewTaskSave(task) {
-    // TODO: complete the check testing
-    if (this.state.tasks.contains(task)) {
-      this.setState({displayEditTask: false, tasks: [...this.state.tasks, task]});
+  componentDidUpdate () {
+    const el=document.getElementById('taskInput')
+    if (el) {
+      el.focus()
     }
+  }
+
+  onNewTaskSave() {
+    const {taskEdited, taskPayload, tasks} = this.state;
+    if (taskEdited) {
+      // edit
+      if ( !(taskEdited === taskPayload) ) {
+        const removeIndex = tasks.indexOf(taskEdited)
+        this.setState({
+          tasks:
+            [
+              ...tasks.slice(0, removeIndex),
+              taskPayload,
+              ...tasks.slice(removeIndex + 1),
+            ]
+            .sort(),
+          taskEdited: ''
+        });
+      }
+    } else {
+      // copy, new task
+      if (tasks.indexOf(taskPayload)===-1) {
+        this.setState({tasks: [...tasks, taskPayload].sort()});
+      }
+    }
+    this.setState({displayEditTask: false});
   }
 
   onNewTaskCancel() {
