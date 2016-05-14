@@ -13,9 +13,9 @@ export default ProjectsTable = ({projects, onDelete, onCopy, onEdit}) => (
       {projects.map( (project) => (
         <TableRow  key={project._id}>
           <TableRowColumn style={{width: '2rem'}}>
-            <button onClick={onDelete.bind(this, project._id)} title='Delete'>&times;</button>
-            <button onClick={onCopy.bind(this, project._id)} title='Copy'>&#x2398;</button>
-            <button onClick={onEdit.bind(this, project._id)} title='Edit'>&#x270D;</button>
+            <button onClick={onDelete.bind(null, project._id)} title='Delete'>&times;</button>
+            <button onClick={onCopy.bind(null, project._id)} title='Copy'>&#x2398;</button>
+            <button onClick={onEdit.bind(null, project._id)} title='Edit'>&#x270D;</button>
           </TableRowColumn>
           <TableRowColumn style={{width: '2rem'}}>{project.projectNumber}</TableRowColumn>
           <TableRowColumn style={{width: '8rem'}}>{project.projectName}</TableRowColumn>

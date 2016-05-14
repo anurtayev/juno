@@ -8,6 +8,7 @@ export const composer = ({context, clearErrors, projectId}, onData) => {
   const {LocalState, Meteor, Collections} = context();
 
   const error = LocalState.get('SAVING_ERROR');
+
   if ( projectId ? Meteor.subscribe('projects.edit', projectId).ready() : true ) {
     const project = projectId ? Collections.Projects.findOne({_id: projectId}) : null;
     onData(null, {error, project});

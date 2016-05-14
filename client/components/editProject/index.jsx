@@ -145,7 +145,7 @@ export default class EditProject extends React.Component {
   }
 
   onNewTaskSave() {
-    const {taskEdited, taskPayload, tasks} = this.state;
+    const {taskEdited, taskPayload, tasks} = this.state
     if (taskEdited) {
       // edit
       if ( !(taskEdited === taskPayload) ) {

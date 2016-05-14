@@ -7,7 +7,13 @@ export default {
     ) return LocalState.set('SAVING_ERROR', 'required values are missing...');
 
     project._id = project._id ? project._id : Meteor.uuid();
-    Meteor.call(project._id ? 'projects.update' : 'projects.insert', project, err => err ? LocalState.set('SAVING_ERROR', err.message) : undefined );
+
+    Meteor.call(
+			project._id ? 'projects.update' : 'projects.insert',
+			project,
+			err => err ? LocalState.set('SAVING_ERROR', err.message) : undefined
+		);
+
     FlowRouter.go('/projectsentries');
   },
 
@@ -25,17 +31,18 @@ export default {
     }
   },
 
-  onEdit({Meteor, FlowRouter}, projectId) {
+  onEdit({FlowRouter}, projectId) {
     FlowRouter.go(`/editProject/${projectId}`);
+  },
+
+	onNewProject({FlowRouter}) {
+    FlowRouter.go(`/newproject`);
   },
 
   onCopy({Meteor, Collections, LocalState, FlowRouter}, projectId) {
     const project = Collections.Entries.findOne({ _id: projectId });
     project._id = Meteor.uuid();
-    Meteor.call('projects.insert', project, (err) => {
-      if (err) {
-        return LocalState.set('SAVING_ERROR', err.message);
-      }
-    });
+    Meteor.call('projects.insert', project, err => err ? LocalState.set('SAVING_ERROR', err.message) : null );
+		FlowRouter.go(`/editProject/${project._id}`);
   }
 }
