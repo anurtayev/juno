@@ -1,10 +1,12 @@
 export default {
   insert({Meteor, LocalState, FlowRouter}, project) {
+		console.log(project);
     if (
         !project.projectNumber ||
         !project.projectName ||
         !project.tasks
     ) return LocalState.set('SAVING_ERROR', 'required values are missing...');
+		console.log('vilid');
 
     project._id = project._id ? project._id : Meteor.uuid();
 
@@ -42,7 +44,7 @@ export default {
   onCopy({Meteor, Collections, LocalState, FlowRouter}, projectId) {
     const project = Collections.Entries.findOne({ _id: projectId });
     project._id = Meteor.uuid();
-    Meteor.call('projects.insert', project, err => err ? LocalState.set('SAVING_ERROR', err.message) : null );
+    Meteor.call('projects.insert', project, err => err ? LocalState.set('SAVING_ERROR', err.message) : undefined );
 		FlowRouter.go(`/editProject/${project._id}`);
   }
 }

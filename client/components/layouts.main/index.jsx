@@ -20,7 +20,8 @@ export default class MainLayout extends React.Component {
           entrypoint: true
         },
         projectsentries: {},
-        editProject: {}
+				editProject: {},
+        newproject: {},
       },
 
       '*': {

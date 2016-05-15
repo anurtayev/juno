@@ -4,14 +4,14 @@ import {composeWithTracker, composeAll} from 'react-komposer'
 import CircularProgress from 'material-ui/lib/circular-progress'
 
 export const composer = ({context}, onData) => {
-  const {Meteor, Collections, LocalState} = context();
+  const {Meteor, Collections, LocalState} = context()
 
-	const error = LocalState.get('SAVING_ERROR');
+	const error = LocalState.get('SAVING_ERROR')
 
   if (Meteor.subscribe('projects').ready()) {
-    const projects = Collections.Projects.find({}).fetch();
+    const projects = Collections.Projects.find({}, {sort: {projectNumber: 1}}).fetch()
 
-    onData(null, {projects, error});
+    onData(null, {projects, error})
   }
 };
 
@@ -23,9 +23,9 @@ export const depsMapper = (context, actions) => ({
 	onNewProject: actions.projects.onNewProject,
   clearErrors: actions.common.clearErrors,
   context: () => context,
-});
+})
 
 export default composeAll(
   composeWithTracker(composer, CircularProgress),
   useDeps(depsMapper)
-)(Projects);
+)(Projects)
