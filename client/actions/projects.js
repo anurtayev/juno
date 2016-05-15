@@ -42,7 +42,7 @@ export default {
   },
 
   onCopy({Meteor, Collections, LocalState, FlowRouter}, projectId) {
-    const project = Collections.Entries.findOne({ _id: projectId });
+    const project = Collections.Projects.findOne({ _id: projectId });
     project._id = Meteor.uuid();
     Meteor.call('projects.insert', project, err => err ? LocalState.set('SAVING_ERROR', err.message) : undefined );
 		FlowRouter.go(`/editProject/${project._id}`);
