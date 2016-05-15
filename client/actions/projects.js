@@ -1,17 +1,17 @@
 export default {
   insert({Meteor, LocalState, FlowRouter}, project) {
-		console.log(project);
     if (
         !project.projectNumber ||
         !project.projectName ||
-        !project.tasks
+        !project.tasks ||
+				!project.tasks.length
     ) return LocalState.set('SAVING_ERROR', 'required values are missing...');
-		console.log('vilid');
 
+		const method = project._id ? 'projects.update' : 'projects.insert'
     project._id = project._id ? project._id : Meteor.uuid();
 
     Meteor.call(
-			project._id ? 'projects.update' : 'projects.insert',
+			method,
 			project,
 			err => err ? LocalState.set('SAVING_ERROR', err.message) : undefined
 		);
