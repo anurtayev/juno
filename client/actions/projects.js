@@ -5,23 +5,44 @@ export default {
         !project.projectName ||
         !project.tasks ||
 				!project.tasks.length
-    ) return LocalState.set('SAVING_ERROR', 'required values are missing...');
+    )
+			return LocalState.set('SAVING_ERROR', 'required values are missing...');
 
-		if (!project._id) {
-			// TODO: uniqueness check
-			Collections.Projects.findOne({projectNumber: projectId})
+		let method
+
+		if (project._id) {
+			// update
+			Meteor.call(
+				'projects.update',
+				project,
+				err => (err ? LocalState.set('SAVING_ERROR', err.message) : undefined)
+			)
+
+			FlowRouter.go('/projectsentries');
+		} else {
+			// insert
+			Meteor.subscribe('projects', () => {
+				// projectNumber must be unique
+				const prj = Collections.Projects.findOne({projectNumber: project.projectNumber});
+				console.log(prj);
+
+				if (Collections.Projects.findOne({projectNumber: project.projectNumber}))
+					return LocalState.set('SAVING_ERROR', 'projectNumber must be unique...');
+
+				// projectNumber must be unique
+				if (Collections.Projects.findOne({projectName: project.projectName}))
+					return LocalState.set('SAVING_ERROR', 'projectName must be unique...');
+
+				project._id = Meteor.uuid()
+				Meteor.call(
+					'projects.insert',
+					project,
+					err => err ? LocalState.set('SAVING_ERROR', err.message) : undefined
+				)
+				
+				FlowRouter.go('/projectsentries');
+			})
 		}
-
-		const method = project._id ? 'projects.update' : 'projects.insert'
-    project._id = project._id ? project._id : Meteor.uuid();
-
-    Meteor.call(
-			method,
-			project,
-			err => err ? LocalState.set('SAVING_ERROR', err.message) : undefined
-		);
-
-    FlowRouter.go('/projectsentries');
   },
 
   navProjects({FlowRouter}) {
