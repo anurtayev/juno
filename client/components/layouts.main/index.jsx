@@ -21,6 +21,7 @@ export default class MainLayout extends React.Component {
         },
         projectsentries: {},
 				editProject: {},
+				copyProject: {},
         newproject: {},
       },
 

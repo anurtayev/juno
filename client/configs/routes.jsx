@@ -61,6 +61,15 @@ export const initRoutes = (context, actions) => {
     }
   });
 
+	FlowRouter.route('/copyProject/:projectId', {
+    name: 'copyProject',
+    action({projectId}) {
+      mount(MainLayoutCtx, {
+        content: () => (<EditProject projectId={projectId} copyFlag/>)
+      });
+    }
+  });
+
   FlowRouter.route('/newproject', {
     name: 'newproject',
     action() {

@@ -7,8 +7,4 @@ export default () => {
   Meteor.publish('projects', function () {
     return Projects.find({});
   });
-
-  Meteor.publish('projects.edit', function (projectId) {
-    return Projects.find({_id: projectId});
-  });
 }

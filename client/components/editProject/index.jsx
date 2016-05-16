@@ -17,10 +17,10 @@ export default class EditProject extends React.Component {
     super(props);
 
     this.state = {
-      _id: props.project ? props.project._id : null,
-      projectNumber: props.project ? props.project.projectNumber : null,
-      projectName: props.project ? props.project.projectName : null,
-      tasks: props.project ? props.project.tasks : [],
+      _id: props.project._id,
+      projectNumber: props.project.projectNumber,
+      projectName: props.project.projectName,
+      tasks: props.project.tasks,
 
 			displayEditTask: false,
 			taskPayload: '',

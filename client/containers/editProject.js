@@ -3,14 +3,19 @@ import {useDeps} from 'react-simple-di';
 import {composeWithTracker, composeAll} from 'react-komposer';
 import CircularProgress from 'material-ui/lib/circular-progress';
 
-export const composer = ({context, clearErrors, projectId}, onData) => {
+export const composer = ({context, clearErrors, projectId, copyFlag}, onData) => {
 
   const {LocalState, Meteor, Collections} = context();
 
   const error = LocalState.get('SAVING_ERROR');
 
-  if ( projectId ? Meteor.subscribe('projects.edit', projectId).ready() : true ) {
-    const project = projectId ? Collections.Projects.findOne({_id: projectId}) : null;
+  if ( projectId ? Meteor.subscribe('projects').ready() : true ) {
+    const project = projectId ?
+			Collections.Projects.findOne({_id: projectId}) :
+			{_id: '', projectNumber: '', projectName: '', tasks: []}
+
+		project._id = copyFlag ? '' : project._id
+
     onData(null, {error, project});
   }
 
