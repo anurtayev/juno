@@ -9,6 +9,6 @@ initMethods();
 const context = initContext();
 initRoutes(context, actions);
 
-//Accounts.ui.config({ passwordSignupFields: 'USERNAME_ONLY' });
+//Accounts.ui.config({ passwordSignupFields: 'USERNAME_ONLY' }); // disable
 
 injectTapEventPlugin();
